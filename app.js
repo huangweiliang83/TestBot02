@@ -23,7 +23,8 @@ console.log("Server running at http://127.0.0.1:8000/");
 
 var builder = require('botbuilder');
 var restify = require('restify');
-var buildercore = require('botbuilder/core/');
+//var buildercore = require('botbuilder/core/');
+//Test
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -35,6 +36,8 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 var connector = new builder.ChatConnector({
     appId: process.env.MICROSOFT_APP_ID,
     appPassword: process.env.MICROSOFT_APP_PASSWORD
+    //appId: '5f6ea84a-490e-441b-b482-74e89a3f6764',
+    //appPassword: 'AYHdryugwA3RrAkoCj5a9Mt'
 });
 
 var bot = new builder.UniversalBot(connector);
