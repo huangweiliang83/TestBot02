@@ -48,17 +48,22 @@ server.post('/api/messages', connector.listen());
 var intents = new builder.IntentDialog();
 
 var parser = new xml2js.Parser();
-var xml = "<config><test>Hello</test><data>SomeData</data></config>";
-
-var extractedData = "";
-var parser = new xml2js.Parser();
+//var xml = "<config><test>Hello</test><data>SomeData</data></config>";
+/*var extractedData = "";
 parser.parseString(xml, function(err,result){
   //Extract the value from the data element
   extractedData = result['config']['data'];
   console.log(extractedData);
   console.log("Test OK; extractedData=", extractedData);
 });
+*/
 
+fs.readFile(__dirname + '/carpark.xml', function(err, data) {
+    parser.parseString(data, function (err, result) {
+        console.dir(result);
+        console.log('Done');
+    });
+});
 
 //=========================================================
 // Bot Dialogs
