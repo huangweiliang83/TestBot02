@@ -56,7 +56,7 @@ parser.parseString(xml, function(err,result){
   //Extract the value from the data element
   extractedData = result['config']['data'];
   console.log(extractedData);
-  onsole.log("Test OK; extractedData=", extractedData);
+  console.log("Test OK; extractedData=", extractedData);
 });
 
 
