@@ -47,26 +47,55 @@ server.post('/api/messages', connector.listen());
 //var connector = new builder.ConsoleConnector().listen();
 var intents = new builder.IntentDialog();
 
+
+//=========================================================
+// Parse XML
+//=========================================================
+/*
 var parser = new xml2js.Parser();
-//var xml = "<config><test>Hello</test><data>SomeData</data></config>";
-/*var extractedData = "";
-parser.parseString(xml, function(err,result){
-  //Extract the value from the data element
-  extractedData = result['config']['data'];
-  console.log(extractedData);
-  console.log("Test OK; extractedData=", extractedData);
-});
-*/
 
 fs.readFile(__dirname + '/carpark.xml', function(err, data) {
     parser.parseString(data, function (err, result) {
-        console.log("entered this function");
-        console.dir(result);
+        //console.dir(result);
+        const util = require('util')
+        console.log(util.inspect(result, false, null))
         console.log('Done');
-    const util = require('util')
-    console.log(util.inspect(result, false, null))
     });
 });
+*/
+
+var eyes = require('eyes'),
+    https = require('https'),
+    fs = require('fs'),
+    xml2js = require('xml2js'),
+    parser = new xml2js.Parser();
+
+
+https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
+    var response_data = '';
+    res.setEncoding('utf8');
+    res.on('data', function(chunk) {
+        response_data += chunk;
+    });
+    res.on('end', function() {
+        parser.parseString(response_data, function(err, result) {
+            if (err) {
+                console.log('Got error: ' + err.message);
+            } else {
+                eyes.inspect(result);
+                console.log('Done.');
+            }
+        });
+    });
+    res.on('error', function(err) {
+        console.log('Got error: ' + err.message);
+    });
+});
+
+
+
+
+
 
 //=========================================================
 // Bot Dialogs
