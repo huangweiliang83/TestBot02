@@ -1,5 +1,5 @@
 //=========================================================
-// HTTP Server Setup
+// HTTP Server Setup for Console
 //=========================================================
 /*
 // Load the http module to create an http server.
@@ -23,8 +23,8 @@ console.log("Server running at http://127.0.0.1:8000/");
 
 var builder = require('botbuilder');
 var restify = require('restify');
-//var buildercore = require('botbuilder/core/');
-//Test
+var fs = require('fs'),
+var xml2js = require('xml2js');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -46,6 +46,18 @@ server.post('/api/messages', connector.listen());
 // Chat with bot using console connector class
 //var connector = new builder.ConsoleConnector().listen();
 var intents = new builder.IntentDialog();
+
+var parser = new xml2js.Parser();
+var xml = "<config><test>Hello</test><data>SomeData</data></config>";
+
+var extractedData = "";
+var parser = new xml2js.Parser();
+parser.parseString(xml, function(err,result){
+  //Extract the value from the data element
+  extractedData = result['config']['data'];
+  console.log(extractedData);
+  onsole.log("Test OK; extractedData=", extractedData);
+});
 
 
 //=========================================================

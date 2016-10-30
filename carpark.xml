@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<carpark>
+<Carparking>
+	<Latitude>34933.9237</Latitude>
+	<Longitude>29669.4119</Longitude>
+	<CoordX>NaN</CoordX>
+	<CoordY>NaN</CoordY>
+	<CarParkingNo>HDBH</CarParkingNo>
+	<CpkAvail>NA</CpkAvail>
+	<Address>BLK 480 480 LORONG 6 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35018.5085</Latitude>
+<Longitude>29669.5764</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP61</CarParkingNo>
+<CpkAvail>NA</CpkAvail>
+<Address>BLK 190 TOA PAYOH CENTRAL MSCP</Address>
+</Carparking>
+<Carparking>
+<Latitude>35049.0624</Latitude>
+<Longitude>29669.0734</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP16</CarParkingNo>
+<CpkAvail>51</CpkAvail>
+<Address>BLK 175/183 TO 185 TOA PAYOH TOWN CENTRE</Address>
+</Carparking>
+<Carparking>
+<Latitude>35107.3661</Latitude>
+<Longitude>29699.9143</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP17</CarParkingNo>
+<CpkAvail>0</CpkAvail>
+<Address>BLK 177 TO 179 TOA PAYOH TOWN CENTRE</Address>
+</Carparking>
+<Carparking>
+<Latitude>34976.48</Latitude>
+<Longitude>29939.32</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP18</CarParkingNo>
+<CpkAvail>10</CpkAvail>
+<Address>BLK 186/191 TO 193 TOA PAYOH TOWN CENTRE</Address>
+</Carparking>
+<Carparking>
+<Latitude>35231.2092</Latitude>
+<Longitude>29698.2634</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPMN</CarParkingNo>
+<CpkAvail>230</CpkAvail>
+<Address>BLK 78B TOA PAYOH CENTRAL</Address>
+</Carparking>
+<Carparking>
+<Latitude>35025.5547</Latitude>
+<Longitude>29325.0625</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPMB</CarParkingNo>
+<CpkAvail>472</CpkAvail>
+<Address>BLK 156A LORONG 1 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35326.4304</Latitude>
+<Longitude>29783.6897</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPM4</CarParkingNo>
+<CpkAvail>108</CpkAvail>
+<Address>BLK 81C LORONG 4 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35161.8974</Latitude>
+<Longitude>29353.495</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPMJ</CarParkingNo>
+<CpkAvail>489</CpkAvail>
+<Address>BLK 146A LORONG 2 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35333.5642</Latitude>
+<Longitude>29560.4287</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPM5</CarParkingNo>
+<CpkAvail>122</CpkAvail>
+<Address>BLK 84C LORONG 2 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35373.4764</Latitude>
+<Longitude>29660.7631</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP2</CarParkingNo>
+<CpkAvail>0</CpkAvail>
+<Address>BLK 85/A/B/C LORONG 4 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35254.4451</Latitude>
+<Longitude>29370.6164</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPMF</CarParkingNo>
+<CpkAvail>338</CpkAvail>
+<Address>BLK 141A LORONG 2 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35135.49</Latitude>
+<Longitude>30090.95</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP12</CarParkingNo>
+<CpkAvail>20</CpkAvail>
+<Address>BLK 71/72 LORONG 5 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>34713.1702</Latitude>
+<Longitude>29290.1401</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TPMD</CarParkingNo>
+<CpkAvail>64</CpkAvail>
+<Address>BLK 161A LORONG 1 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35315.1935</Latitude>
+<Longitude>29973.9188</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP65</CarParkingNo>
+<CpkAvail>NA</CpkAvail>
+<Address>BLK 62B LORONG 4 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>34803.2161</Latitude>
+<Longitude>29242.9935</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP20</CarParkingNo>
+<CpkAvail>22</CpkAvail>
+<Address>BLK 158-161/163/168-174 LORONG 1 TOA PAYOH</Address>
+</Carparking>
+<Carparking>
+<Latitude>35280.77</Latitude>
+<Longitude>30028.99</Longitude>
+<CoordX>NaN</CoordX>
+<CoordY>NaN</CoordY>
+<CarParkingNo>TP3</CarParkingNo>
+<CpkAvail>99</CpkAvail>
+<Address>BLK 66/70/73 LORONG 4 TOA PAYOH</Address>
+</Carparking>
+</carpark>
