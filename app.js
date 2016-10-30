@@ -23,7 +23,7 @@ console.log("Server running at http://127.0.0.1:8000/");
 
 var builder = require('botbuilder');
 var restify = require('restify');
-var fs = require('fs'),
+var fs = require('fs');
 var xml2js = require('xml2js');
 
 // Setup Restify Server
