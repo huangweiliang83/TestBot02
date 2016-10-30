@@ -64,7 +64,7 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
         console.log('Done');
     });
 });
-//console.log(util.inspect(result, false, null))
+console.log(util.inspect(result, false, null))
 
 //=========================================================
 // Bot Dialogs
