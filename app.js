@@ -62,8 +62,8 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
     parser.parseString(data, function (err, result) {
         console.dir(result);
         console.log('Done');
-        const util = require('util')
-    console.log(util.inspect(result, false, null))
+    //    const util = require('util')
+    //console.log(util.inspect(result, false, null))
     });
 });
 
