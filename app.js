@@ -58,15 +58,13 @@ parser.parseString(xml, function(err,result){
 });
 */
 
-console.log("entered this function 1");
-
 fs.readFile(__dirname + '/carpark.xml', function(err, data) {
     parser.parseString(data, function (err, result) {
         console.log("entered this function");
         console.dir(result);
         console.log('Done');
-    //const util = require('util')
-    //console.log(util.inspect(result, false, null))
+    const util = require('util')
+    console.log(util.inspect(result, false, null))
     });
 });
 
