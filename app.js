@@ -18,13 +18,17 @@ console.log("Server running at http://127.0.0.1:8000/");
 */
 
 //=========================================================
-// Bot Setup
+// Global Variables
 //=========================================================
 
 var builder = require('botbuilder');
 var restify = require('restify');
 var fs = require('fs');
 var xml2js = require('xml2js');
+
+//=========================================================
+// Bot Setup
+//=========================================================
 
 // Setup Restify Server
 var server = restify.createServer();
