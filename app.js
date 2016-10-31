@@ -53,7 +53,7 @@ var intents = new builder.IntentDialog();
 
 
 //=========================================================
-// Parse XML
+// Parse XML Locally
 //=========================================================
 /*
 var parser = new xml2js.Parser();
@@ -68,10 +68,12 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
 });
 */
 
+//=========================================================
+// Parse XML from Server
+//=========================================================
 var eyes = require('eyes');
 var https = require('https');
 var parser = new xml2js.Parser();
-
 
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
     var response_data = '';
@@ -105,7 +107,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
 
 bot.dialog('/', intents);
 
-intents.matches(/^hello/i, function (session) {
+intents.matches(/^hello|hi/i, function (session) {
         session.send("Hi there!");
     })
     .onDefault(function (session) {
