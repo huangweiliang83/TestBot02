@@ -83,11 +83,13 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
         response_data += chunk;
     });
 
-    res.pipe(concat(function(buffer) {
+ res.pipe(concat(function(buffer) {
       var str = buffer.toString();
-
+      parser.parseString(str, function(err, result) {
+        console.log('Finished parsing:', err, result);
+      });
     }));
-
+    /*
     res.on('end', function() {
          parser.parseString(str, function(err, result) {
         //parser.parseString(response_data, function(err, result) {
@@ -98,7 +100,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Done.');
             }
         });
-    });
+    });*/
     res.on('error', function(err) {
         console.log('Got error: ' + err.message);
     });
