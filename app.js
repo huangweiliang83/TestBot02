@@ -78,14 +78,13 @@ var concat = require('concat-stream');
 
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
     var response_data = '';
-     var str = buffer.toString();
     res.setEncoding('utf8');
     res.on('data', function(chunk) {
         response_data += chunk;
-        str += chunk;
     });
 
     res.pipe(concat(function(chunk) {
+        var str = buffer.toString();
       parser.parseString(str, function(err, result) {
           eyes.inspect(result);
         console.log('Finished parsing:', err, result);
