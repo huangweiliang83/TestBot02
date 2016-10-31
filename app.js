@@ -73,7 +73,7 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
 //=========================================================
 var eyes = require('eyes');
 var https = require('https');
-var parser = new xml2js.Parser();
+var parser = new xml2js.Parser({oignoreAttrs: true});
 var concat = require('concat-stream');
 
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
@@ -83,14 +83,15 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
         response_data += chunk;
     });
 
+/*
     res.pipe(concat(function(chunk) {
         var str = chunk.toString();
       parser.parseString(str, function(err, result) {
           eyes.inspect(result);
         console.log('Finished parsing:', err, result);
       });
-    }));
-    /*
+    }));*/
+    
     res.on('end', function() {
         parser.parseString(response_data, function(err, result) {
             if (err) {
@@ -100,7 +101,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Done.');
             }
         });
-    });*/
+    });
         res.on('error', function(err) {
         console.log('Got error: ' + err.message);
     });
@@ -123,7 +124,7 @@ intents.matches(/^hello|hi/i, function (session) {
         session.send("I didn't understand. Say hello to me!");
     });
 
-
+/*
 intents.onDefault([
     function (session, args, next) {
         if (!session.userData.name) {
@@ -145,4 +146,4 @@ bot.dialog('/profile', [
         session.userData.name = results.response;
         session.endDialog();
     }
-]);
+]);*/
