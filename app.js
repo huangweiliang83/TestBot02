@@ -74,7 +74,11 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
 var eyes = require('eyes');
 var https = require('https');
 var parser = new xml2js.Parser();
+var concat = require('concat-stream');
 
+
+
+/*
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
     var response_data = '';
     res.setEncoding('utf8');
@@ -94,9 +98,24 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
     res.on('error', function(err) {
         console.log('Got error: ' + err.message);
     });
+});*/
+
+parser.on('error', function(err) { console.log('Parser error', err); });
+
+https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
+
+    resp.on('error', function(err) {
+      console.log('Error while reading', err);
+    });
+
+    resp.pipe(concat(function(buffer) {
+      var str = buffer.toString();
+      parser.parseString(str, function(err, result) {
+        console.log('Finished parsing:', err, result);
+      });
+    }));
+
 });
-
-
 
 
 
