@@ -83,7 +83,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
         response_data += chunk;
     });
 
-    resp.pipe(concat(function(buffer) {
+    res.pipe(concat(function(buffer) {
       var str = buffer.toString();
 
     }));
