@@ -84,7 +84,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
     });
 
     res.pipe(concat(function(chunk) {
-        var str = buffer.toString();
+        var str = chunk.toString();
       parser.parseString(str, function(err, result) {
           eyes.inspect(result);
         console.log('Finished parsing:', err, result);
