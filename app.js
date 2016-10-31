@@ -86,13 +86,13 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
  res.pipe(concat(function(buffer) {
       var str = buffer.toString();
       parser.parseString(str, function(err, result) {
+          eyes.inspect(result);
         console.log('Finished parsing:', err, result);
       });
     }));
     /*
     res.on('end', function() {
-         parser.parseString(str, function(err, result) {
-        //parser.parseString(response_data, function(err, result) {
+        parser.parseString(response_data, function(err, result) {
             if (err) {
                 console.log('Got error: ' + err.message);
             } else {
