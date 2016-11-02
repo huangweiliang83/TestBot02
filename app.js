@@ -107,9 +107,9 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Converting to JSON object.');
                 var jsonobject = JSON.parse(JSON.stringify(result));
                 console.dir(jsonobject);
-                console.log(util.inspect(jsonobject, false, null))
-                
-        
+                console.log(util.inspect(jsonobject, false, null));
+
+               console.log(jsonobject.GetAmenities.Carparking.length);
 /*
                 for (var i = 0; i < jsonobject.length; ++i) {
                     console.log("Book Id : "+jsonobject[i].Latitude);
