@@ -107,9 +107,15 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 var jsonobject = JSON.parse(JSON.stringify(result));
                 console.dir(jsonobject);
                 
-                var exjson = {'key':'jsonobject.Latitude'};
-                for(var exKey in exjson) {
-                    console.log("key:"+exKey+", value:"+exjson[exKey]);
+                for (var i = 0; i < jsonobject.length; ++i) {
+                    console.log("Book Id : "+jsonobject[i].Latitude);
+                    console.log("Book Name : "+jsonobject[i].Longitude);
+                    console.log("Book Cost : "+jsonobject[i].CoordX);
+                    console.log("Book Cost : "+jsonobject[i].CoordY);
+                    console.log("Book Cost : "+jsonobject[i].CarParkingNo);
+                    console.log("Book Cost : "+jsonobject[i].CpkAvail);
+                    console.log("Book Cost : "+jsonobject[i].Address);
+                    console.log("----------------------------------------");
                 }
     
                 console.log('Done.');
