@@ -119,7 +119,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     //console.log("CarParkingNo : "+jsonobject[i].CarParkingNo);
                     //console.log("CpkAvail : "+jsonobject[i].CpkAvail);
                     //console.log("Address : "+jsonobject[i].Address);
-                    //console.log("----------------------------------------");
+                    console.log("----------------------------------------");
                 }
     
 
