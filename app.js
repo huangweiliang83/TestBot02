@@ -98,9 +98,9 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Got error: ' + err.message);
             } else {
                 eyes.inspect(result);
+                console.log('Converting to JSON.');
                 //converting into JSON
-                //console.dir(JSON.stringify(result));
-                console.log(util.inspect(result, false, null))
+                console.dir(JSON.stringify(result));
                 console.log('Done.');
             }
         });
