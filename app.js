@@ -93,12 +93,6 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
     }));*/
     
     res.on('end', function() {
-        var jsonobject = JSON.parse(response_data);
-        console.dir(jsonobject);
-        console.log('Converting to JSON object.');
-
-
-
         parser.parseString(response_data, function(err, result) {
             if (err) {
                 console.log('Got error: ' + err.message);
@@ -108,6 +102,12 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Converting to JSON string.');
                 //converting into JSON into string
                 console.dir(JSON.stringify(result));
+
+        var jsonobject = JSON.parse(JSON.stringify(result));
+        console.dir(jsonobject);
+        console.log('Converting to JSON object.');
+
+
                 console.log('Done.');
 
 
