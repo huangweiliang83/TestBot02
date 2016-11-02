@@ -105,8 +105,8 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
 
                 console.log('Converting to JSON object.');
                 var jsonobject = JSON.parse(JSON.stringify(result));
-                console.dir(jsonobject);
-                console.log(jsonobject.latitude);
+                //console.dir(jsonobject);
+                //console.log(jsonobject.latitude);
     
                 console.log('Done.');
 
