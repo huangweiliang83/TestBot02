@@ -75,6 +75,7 @@ var eyes = require('eyes');
 var https = require('https');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 //var concat = require('concat-stream');
+var util = require('util');
 
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
     var response_data = '';
