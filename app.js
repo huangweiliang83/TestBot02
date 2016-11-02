@@ -81,10 +81,6 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
     res.setEncoding('utf8');
     res.on('data', function(chunk) {
         response_data += chunk;
-
-        var jsonobject = JSON.parse(response_data);
-        console.dir(jsonobject);
-        console.log('converted to json object');
     });
 
 /*
@@ -97,13 +93,19 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
     }));*/
     
     res.on('end', function() {
+        var jsonobject = JSON.parse(response_data);
+        console.dir(jsonobject);
+        console.log('Converting to JSON object.');
+
+
+
         parser.parseString(response_data, function(err, result) {
             if (err) {
                 console.log('Got error: ' + err.message);
             } else {
                 eyes.inspect(result);
 
-                console.log('Converting to JSON.');
+                console.log('Converting to JSON string.');
                 //converting into JSON into string
                 console.dir(JSON.stringify(result));
                 console.log('Done.');
