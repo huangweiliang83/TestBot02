@@ -99,21 +99,16 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
             } else {
                 eyes.inspect(result);
 
-                var exjson = {'key':'Latitude', 'key2':'Longitude' , 'key3':'CarParkingNo'};
-                    for(var exKey in exjson) {
-                        console.log("key:"+exKey+", value:"+exjson[exKey]);
-                    }
-
-
-
-
-
-
                 console.log('Converting to JSON.');
                 //converting into JSON into string
                 console.dir(JSON.stringify(result));
                 console.log('Done.');
 
+var jsonObj = JSON.parse(result);
+var exjson = {'key':'Latitude', 'key2':'.Longitude', 'key3':'CarParkingNo'};
+for(var exKey in jsonObj) {
+      console.log("key:"+exKey+", value:"+exjson[exKey]);
+ }
 
 
  
