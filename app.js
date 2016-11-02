@@ -100,25 +100,25 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
             } else {
                 eyes.inspect(result);
 
-                console.log('Converting to JSON string.');
                 //converting into JSON into string
+                console.log('Converting to JSON string.');
                 console.dir(JSON.stringify(result));
 
+                //converting into JSON object
                 console.log('Converting to JSON object.');
                 var jsonobject = JSON.parse(JSON.stringify(result));
-                console.dir(jsonobject);
                 console.log(util.inspect(jsonobject, false, null));
 
               // console.log(jsonobject.GetAmenities.Carparking.length);
 
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
                     console.log("Latitude : "+jsonobject.GetAmenities.Carparking[i].Latitude);
-                   //console.log("Longitude : "+jsonobject[i].Longitude);
-                    //console.log("CoordX : "+jsonobject[i].CoordX);
-                    //console.log("CoordY : "+jsonobject[i].CoordY);
-                    //console.log("CarParkingNo : "+jsonobject[i].CarParkingNo);
-                    //console.log("CpkAvail : "+jsonobject[i].CpkAvail);
-                    //console.log("Address : "+jsonobject[i].Address);
+                    console.log("Longitude : "+jsonobject.GetAmenities.Carparking[i].Longitude);
+                    console.log("CoordX : "+jsonobject.GetAmenities.Carparking[i].CoordX);
+                    console.log("CoordY : "+jsonobject.GetAmenities.Carparking[i].CoordY);
+                    console.log("CarParkingNo : "+jsonobject.GetAmenities.Carparking[i].CarParkingNo);
+                    console.log("CpkAvail : "+jsonobject.GetAmenities.Carparking[i].CpkAvail);
+                    console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
                     console.log("----------------------------------------");
                 }
     
