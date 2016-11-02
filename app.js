@@ -74,7 +74,7 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
 var eyes = require('eyes');
 var https = require('https');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
-var concat = require('concat-stream');
+//var concat = require('concat-stream');
 
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
     var response_data = '';
@@ -98,7 +98,9 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Got error: ' + err.message);
             } else {
                 eyes.inspect(result);
-                console.dir(JSON.stringify(result));
+                //converting into JSON
+                //console.dir(JSON.stringify(result));
+                console.log(util.inspect(result, false, null))
                 console.log('Done.');
             }
         });
