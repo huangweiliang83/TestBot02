@@ -306,6 +306,12 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
 
                 //traverse JSON object
                 var cv = new SVY21();
+                var nearestdistance = 0;
+                var showdistanceformat;
+                var showdistance;
+                var getlatlong;
+                var showlat;
+                var showlong;
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                 {
                     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
@@ -318,20 +324,20 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     //convert SVY21 to Lat/Long
                     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
                     //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
-                    var getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    var showlat = getlatlong[0];
-                    var showlong = getlatlong[1];
+                    getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    showlat = getlatlong[0];
+                    showlong = getlatlong[1];
                     console.log("Latitude : " + showlat);
                     console.log("Longitude : " + showlong);
                     //calculate distance between 2 coordinates
-                    var showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
+                    showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
                     //round to 3 decimal places
-                    var showdistanceformat = Math.round(showdistance*1000)/1000;
-                    console.log("Distance(in km) : " + Math.round(showdistance*1000)/1000);
-                    console.log(showdistanceformat);
+                    showdistanceformat = Math.round(showdistance*1000)/1000;
+                    console.log("Distance(in km) : " + showdistanceformat);
 
-
-                    //to write code to find the nearest car park
+                    //var tempdistance = showdistanceformat;
+                    
+                    
                     
 
 
