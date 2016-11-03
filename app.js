@@ -321,6 +321,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
 
                     var distance = calculatedistance(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude, 1.332401, 103.848438, 'K');
                     //round to 3 decimal places
+                    //
                     console.log(Math.round(distance*1000)/1000);
 
 
