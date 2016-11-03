@@ -235,9 +235,11 @@ var SVY21 = (function(){
 
         //return {lat: lat / (Math.PI / 180), lon: lon / (Math.PI / 180)};
 
-        var convertlat = [lat / (Math.PI / 180),lon / (Math.PI / 180)];
-        return convertlat;
-		};
+        var convertlat = (lat / (Math.PI / 180));
+        var convertlon = (lon / (Math.PI / 180));
+        return [convertlat, convertlon];
+		
+    };
 
 });
 
@@ -325,6 +327,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     var dCodes = cv.computeLatLon[0];
                     var dCodes2 = cv.computeLatLon[1];
         console.log(dCodes);
+        console.log(dCodes2);
 
                     //var distance = calculatedistance(lat, long, '1.332401', '103.848438', 'K');
                     //round to 3 decimal places
