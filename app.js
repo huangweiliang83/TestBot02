@@ -242,20 +242,24 @@ var SVY21 = (function(){
 //=========================================================
 // Parse XML from Server
 //=========================================================
-var eyes = require('eyes');
-var https = require('https');
-var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
-//var concat = require('concat-stream');
-var util = require('util');
 
-https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
+function parseXML() 
+{
+    var eyes = require('eyes');
+    var https = require('https');
+    var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
+    var util = require('util');
+
+    https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
     var response_data = '';
     res.setEncoding('utf8');
-    res.on('data', function(chunk) {
+    res.on('data', function(chunk) 
+    {
         response_data += chunk;
     });
 
-/*
+    /*
+    //var concat = require('concat-stream');
     res.pipe(concat(function(chunk) {
         var str = chunk.toString();
       parser.parseString(str, function(err, result) {
@@ -264,11 +268,15 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
       });
     }));*/
     
-    res.on('end', function() {
-        parser.parseString(response_data, function(err, result) {
-            if (err) {
+    res.on('end', function() 
+    {
+        parser.parseString(response_data, function(err, result) 
+        {
+            if (err) 
+            {
                 console.log('Got error: ' + err.message);
-            } else {
+            } else 
+            {
                 eyes.inspect(result);
 
                 //converting into JSON into string
@@ -282,7 +290,8 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
 
               // console.log(jsonobject.GetAmenities.Carparking.length);
 
-                for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
+                for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
+                {
                     console.log("Latitude : "+jsonobject.GetAmenities.Carparking[i].Latitude);
                     console.log("Longitude : "+jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log("CoordX : "+jsonobject.GetAmenities.Carparking[i].CoordX);
@@ -293,34 +302,33 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("----------------------------------------");
                 }
     
-
-
                 console.log('Done.');
-
-// Initialization
-var cv = new SVY21();
-
-// Computing SVY21 from Lat/Lon
-var lat = 1.2949192688485278;
-var lon = 103.77367436885834;
-var result = cv.computeSVY21(lat, lon);
-console.log(result);
-
-// Computing Lat/Lon from SVY21
-var resultLatLon = cv.computeLatLon(result.N, result.E);
-console.log(resultLatLon);
-
-
- 
             }
         });
     });
-        res.on('error', function(err) {
+    res.on('error', function(err) 
+    {
         console.log('Got error: ' + err.message);
     });
 });
 
 
+                // Initialization
+                var cv = new SVY21();
+                var parsexml = parseXML();
+                 
+                // Computing SVY21 from Lat/Lon
+                var lat = 1.2949192688485278;
+                var lon = 103.77367436885834;
+                var result = cv.computeSVY21(lat, lon);
+                console.log(result);
+
+                // Computing Lat/Lon from SVY21
+                var resultLatLon = cv.computeLatLon(result.N, result.E);
+                console.log(resultLatLon);
+
+
+}
 
 
 
