@@ -72,7 +72,8 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
 // Convert SVY21 to Lat/Long
 //=========================================================
 
-var SVY21 = (function(){
+var SVY21 = (function()
+{
     // Ref: http://www.linz.govt.nz/geodetic/conversion-coordinates/projection-conversions/transverse-mercator-preliminary-computations/index.aspx
     
     // WGS84 Datum
@@ -245,7 +246,8 @@ var SVY21 = (function(){
 // Calculate Distance
 //=========================================================
 
-function calculatedistance(lat1, lon1, lat2, lon2, unit) {
+function calculatedistance(lat1, lon1, lat2, lon2, unit)
+{
         var radlat1 = Math.PI * lat1/180
         var radlat2 = Math.PI * lat2/180
         var radlon1 = Math.PI * lon1/180
@@ -277,7 +279,7 @@ var getlongfromuser = 103.848438;
 
 //https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res) 
-    {
+{
     var response_data = '';
     res.setEncoding('utf8');
     res.on('data', function(chunk)
@@ -325,7 +327,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("Latitude : " + showlat);
                     console.log("Longitude : " + showlong);
                     //calculate distance between 2 coordinates
-                    var showdistance = calculatedistance(showlat, showlong, '1.332401', '103.848438', 'K');
+                    var showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
                     //round to 3 decimal places
                     console.log("Distance(in km) : " + Math.round(showdistance*1000)/1000);
 
