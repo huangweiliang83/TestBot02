@@ -23,8 +23,8 @@ console.log("Server running at http://127.0.0.1:8000/");
 
 var builder = require('botbuilder');
 var restify = require('restify');
-var fs = require('fs');
-var xml2js = require('xml2js');
+//var fs = require('fs');
+
 
 //=========================================================
 // Bot Setup
@@ -271,6 +271,7 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 //=========================================================
 var eyes = require('eyes');
 var https = require('https');
+var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
 
