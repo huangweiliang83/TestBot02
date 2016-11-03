@@ -283,16 +283,17 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
               // console.log(jsonobject.GetAmenities.Carparking.length);
                 var cv = new SVY21();
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
-                    console.log("Latitude : "+jsonobject.GetAmenities.Carparking[i].Latitude);
-                    console.log("Longitude : "+jsonobject.GetAmenities.Carparking[i].Longitude);
+                    console.log("Latitude(SVY21) : "+jsonobject.GetAmenities.Carparking[i].Latitude);
+                    console.log("Longitude(SVY21) : "+jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log("CoordX : "+jsonobject.GetAmenities.Carparking[i].CoordX);
                     console.log("CoordY : "+jsonobject.GetAmenities.Carparking[i].CoordY);
                     console.log("CarParkingNo : "+jsonobject.GetAmenities.Carparking[i].CarParkingNo);
                     console.log("CpkAvail : "+jsonobject.GetAmenities.Carparking[i].CpkAvail);
                     console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
+                    console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
                     console.log("----------------------------------------");
-                    var resultLatLon = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    console.log(resultLatLon);
+                    cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
                 }
     
                 console.log('Done.');
@@ -308,7 +309,6 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 //console.log(result);
 
                 // Computing Lat/Lon from SVY21
-                //var resultLatLon = cv.computeLatLon(+jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
                 //var resultLatLon = cv.computeLatLon(result.N, result.E);
                 //console.log(resultLatLon);
 
