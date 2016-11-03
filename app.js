@@ -313,6 +313,9 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 var showlat;
                 var showlong;
                 var nearestcarpark;
+                var nearestcarparklotavailable;
+                var nearestcarparkno;
+
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                 {
                     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
@@ -336,25 +339,30 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     showdistanceformat = Math.round(showdistance*1000)/1000;
                     console.log("Distance(in km) : " + showdistanceformat);
                     
-                    //find shortest distance
+                    //find nearest car park by finding shortest distance
                     var tempdistance = showdistanceformat;
                     if (i == 0)
                     {
                         nearestdistance = tempdistance;
                         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
-                        
+                        nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                        nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
                     }
                     if (nearestdistance > tempdistance)
                     {
                         nearestdistance = tempdistance;
                         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                        nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                        nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
                     }
                     
                 
                     console.log("----------------------------------------");
                 }
-                console.log(nearestdistance);
-                console.log(nearestcarpark);
+                console.log("Nearest Distance : " + nearestdistance);
+                console.log("Nearest Car Park : " + nearestcarpark);
+                console.log("Nearest Car Park No : " + nearestcarparkno);
+                console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
                 console.log('Done.');
 
 
