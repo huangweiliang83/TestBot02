@@ -238,6 +238,30 @@ var SVY21 = (function(){
 
 });
 
+//=========================================================
+// Calculate Distance
+//=========================================================
+
+function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
+
+
 
 //=========================================================
 // Parse XML from Server
@@ -245,7 +269,6 @@ var SVY21 = (function(){
 var eyes = require('eyes');
 var https = require('https');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
-//var concat = require('concat-stream');
 var util = require('util');
 
 https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
@@ -256,6 +279,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
     });
 
 /*
+    //var concat = require('concat-stream');
     res.pipe(concat(function(chunk) {
         var str = chunk.toString();
       parser.parseString(str, function(err, result) {
@@ -264,11 +288,15 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
       });
     }));*/
     
-    res.on('end', function() {
-        parser.parseString(response_data, function(err, result) {
-            if (err) {
+    res.on('end', function() 
+    {
+        parser.parseString(response_data, function(err, result) 
+        {
+            if (err) 
+            {
                 console.log('Got error: ' + err.message);
-            } else {
+            } else 
+            {
                 eyes.inspect(result);
 
                 //converting into JSON into string
@@ -280,7 +308,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 var jsonobject = JSON.parse(JSON.stringify(result));
                 console.log(util.inspect(jsonobject, false, null));
 
-              // console.log(jsonobject.GetAmenities.Carparking.length);
+                //read JSON object
                 var cv = new SVY21();
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
                     console.log("Latitude(SVY21) : "+jsonobject.GetAmenities.Carparking[i].Latitude);
@@ -290,15 +318,13 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("CarParkingNo : "+jsonobject.GetAmenities.Carparking[i].CarParkingNo);
                     console.log("CpkAvail : "+jsonobject.GetAmenities.Carparking[i].CpkAvail);
                     console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
-                    console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
-                    console.log("----------------------------------------");
                     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
-                }
+                    console.log("----------------------------------------");
+            }
     
                 console.log('Done.');
                 
-//
                 // Initialization
                 //var cv = new SVY21();
 
