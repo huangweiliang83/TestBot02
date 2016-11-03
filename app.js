@@ -17,18 +17,13 @@ server.listen(8000);
 console.log("Server running at http://127.0.0.1:8000/");
 */
 
-//=========================================================
-// Global Variables
-//=========================================================
-
-var builder = require('botbuilder');
-var restify = require('restify');
-//var fs = require('fs');
-
 
 //=========================================================
 // Bot Setup
 //=========================================================
+
+var builder = require('botbuilder');
+var restify = require('restify');
 
 // Setup Restify Server
 var server = restify.createServer();
@@ -57,6 +52,7 @@ var intents = new builder.IntentDialog();
 //=========================================================
 /*
 var parser = new xml2js.Parser();
+var fs = require('fs');
 
 fs.readFile(__dirname + '/carpark.xml', function(err, data) {
     parser.parseString(data, function (err, result) {
@@ -330,7 +326,13 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     //calculate distance between 2 coordinates
                     var showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
                     //round to 3 decimal places
+                    var showdistanceformat = Math.round(showdistance*1000)/1000;
                     console.log("Distance(in km) : " + Math.round(showdistance*1000)/1000);
+                    console.log(showdistanceformat);
+
+
+                    //to write code to find the nearest car park
+                    
 
 
                     console.log("----------------------------------------");
