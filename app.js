@@ -233,7 +233,10 @@ var SVY21 = (function(){
         var lonTerm4 = ((x7 * secLatPrime) / 5040) * (61 + 662 * tPrime2 + 1320 * tPrime4 + 720 * tPrime6);
         var lon = (this.oLon * Math.PI / 180) + lonTerm1 - lonTerm2 + lonTerm3 - lonTerm4;
 
-        return {lat: lat / (Math.PI / 180), lon: lon / (Math.PI / 180)};
+        //return {lat: lat / (Math.PI / 180), lon: lon / (Math.PI / 180)};
+
+        var convertlat = [lat / (Math.PI / 180),lon / (Math.PI / 180)];
+        return convertlat;
 		};
 
 });
@@ -318,10 +321,10 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
                     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
-                    var lat = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude);
-                    var long = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Longitude);
-                    console.log("Lat : " + lat);
-                    console.log("Long : " + long);
+                    var codes = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    var dCodes = cv.computeLatLon[0];
+                    var dCodes2 = cv.computeLatLon[1];
+        console.log(dCodes);
 
                     //var distance = calculatedistance(lat, long, '1.332401', '103.848438', 'K');
                     //round to 3 decimal places
