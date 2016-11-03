@@ -291,7 +291,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("CpkAvail : "+jsonobject.GetAmenities.Carparking[i].CpkAvail);
                     console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
                     console.log("----------------------------------------");
-                    var resultLatLon = cv.computeLatLon(+jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    var resultLatLon = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log(resultLatLon);
                 }
     
