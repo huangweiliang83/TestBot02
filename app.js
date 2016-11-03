@@ -276,7 +276,7 @@ var getlatfromuser =  1.332401;
 var getlongfromuser = 103.848438;
 
 //https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
-https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) 
+https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd="+getlongfromuser+"&latd="+getlatfromuser+"&identifier=CPK&bounds=500', function(res) 
     {
     var response_data = '';
     res.setEncoding('utf8');
@@ -327,7 +327,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     //calculate distance between 2 coordinates
                     var showdistance = calculatedistance(showlat, showlong, '1.332401', '103.848438', 'K');
                     //round to 3 decimal places
-                    console.log("Distance : " + Math.round(showdistance*1000)/1000);
+                    console.log("Distance(in km) : " + Math.round(showdistance*1000)/1000);
 
 
                     console.log("----------------------------------------");
