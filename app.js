@@ -335,7 +335,15 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     showdistanceformat = Math.round(showdistance*1000)/1000;
                     console.log("Distance(in km) : " + showdistanceformat);
 
-                    //var tempdistance = showdistanceformat;
+                    var tempdistance = showdistanceformat;
+                    if (i == 0)
+                    {
+                        nearestdistance = tempdistance;
+                    }
+                    if (nearestdistance > tempdistance)
+                    {
+                        nearestdistance = tempdistance;
+                    }
                     
                     
                     
@@ -343,7 +351,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
 
                     console.log("----------------------------------------");
                 }
-    
+                console.log(nearestdistance);
                 console.log('Done.');
 
 
