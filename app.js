@@ -312,6 +312,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 var getlatlong;
                 var showlat;
                 var showlong;
+                var nearestcarpark;
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                 {
                     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
@@ -334,24 +335,26 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     //round to 3 decimal places
                     showdistanceformat = Math.round(showdistance*1000)/1000;
                     console.log("Distance(in km) : " + showdistanceformat);
-
+                    
+                    //find shortest distance
                     var tempdistance = showdistanceformat;
                     if (i == 0)
                     {
                         nearestdistance = tempdistance;
+                        nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                        
                     }
                     if (nearestdistance > tempdistance)
                     {
                         nearestdistance = tempdistance;
+                        nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
                     }
                     
-                    
-                    
-
-
+                
                     console.log("----------------------------------------");
                 }
                 console.log(nearestdistance);
+                console.log(nearestcarpark);
                 console.log('Done.');
 
 
