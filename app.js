@@ -281,7 +281,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log(util.inspect(jsonobject, false, null));
 
               // console.log(jsonobject.GetAmenities.Carparking.length);
-
+                var cv = new SVY21();
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
                     console.log("Latitude : "+jsonobject.GetAmenities.Carparking[i].Latitude);
                     console.log("Longitude : "+jsonobject.GetAmenities.Carparking[i].Longitude);
@@ -291,23 +291,26 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("CpkAvail : "+jsonobject.GetAmenities.Carparking[i].CpkAvail);
                     console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
                     console.log("----------------------------------------");
+                    var resultLatLon = cv.computeLatLon(+jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    console.log(resultLatLon);
                 }
     
                 console.log('Done.');
                 
 //
                 // Initialization
-                var cv = new SVY21();
+                //var cv = new SVY21();
 
                 // Computing SVY21 from Lat/Lon
-                var lat = 1.2949192688485278;
-                var lon = 103.77367436885834;
-                var result = cv.computeSVY21(lat, lon);
-                console.log(result);
+                //var lat = 1.2949192688485278;
+                //var lon = 103.77367436885834;
+                //var result = cv.computeSVY21(lat, lon);
+                //console.log(result);
 
                 // Computing Lat/Lon from SVY21
-                var resultLatLon = cv.computeLatLon(result.N, result.E);
-                console.log(resultLatLon);
+                //var resultLatLon = cv.computeLatLon(+jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                //var resultLatLon = cv.computeLatLon(result.N, result.E);
+                //console.log(resultLatLon);
 
 
  
