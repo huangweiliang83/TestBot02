@@ -272,22 +272,18 @@ var https = require('https');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
 
-https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
+var getlatfromuser =  1.332401;
+var getlongfromuser = 103.848438;
+
+//https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
+https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=getlatfromuser&identifier=CPK&bounds=500', function(res) 
+    {
     var response_data = '';
     res.setEncoding('utf8');
-    res.on('data', function(chunk) {
+    res.on('data', function(chunk)
+    {
         response_data += chunk;
     });
-
-/*
-    //var concat = require('concat-stream');
-    res.pipe(concat(function(chunk) {
-        var str = chunk.toString();
-      parser.parseString(str, function(err, result) {
-          eyes.inspect(result);
-        console.log('Finished parsing:', err, result);
-      });
-    }));*/
     
     res.on('end', function() 
     {
@@ -300,7 +296,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
             {
                 eyes.inspect(result);
 
-                //converting into JSON into string
+                //convert into JSON into string
                 console.log('Converting to JSON string.');
                 console.dir(JSON.stringify(result));
 
@@ -309,7 +305,7 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 var jsonobject = JSON.parse(JSON.stringify(result));
                 console.log(util.inspect(jsonobject, false, null));
 
-                //read JSON object
+                //traverse JSON object
                 var cv = new SVY21();
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                 {
@@ -328,11 +324,10 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     var showlong = getlatlong[1];
                     console.log("Latitude : " + showlat);
                     console.log("Longitude : " + showlong);
-
                     //calculate distance between 2 coordinates
                     var showdistance = calculatedistance(showlat, showlong, '1.332401', '103.848438', 'K');
                     //round to 3 decimal places
-                    console.log(Math.round(showdistance*1000)/1000);
+                    console.log("Distance : " + Math.round(showdistance*1000)/1000);
 
 
                     console.log("----------------------------------------");
@@ -362,9 +357,10 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
             }
         });
     });
-        res.on('error', function(err) {
+        res.on('error', function(err) 
+        {
         console.log('Got error: ' + err.message);
-    });
+        });
 });
 
 
