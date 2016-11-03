@@ -233,8 +233,6 @@ var SVY21 = (function(){
         var lonTerm4 = ((x7 * secLatPrime) / 5040) * (61 + 662 * tPrime2 + 1320 * tPrime4 + 720 * tPrime6);
         var lon = (this.oLon * Math.PI / 180) + lonTerm1 - lonTerm2 + lonTerm3 - lonTerm4;
 
-        //return {lat: lat / (Math.PI / 180), lon: lon / (Math.PI / 180)};
-
         var convertlat = (lat / (Math.PI / 180));
         var convertlon = (lon / (Math.PI / 180));
         return [convertlat, convertlon];
@@ -306,14 +304,15 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 console.log('Converting to JSON string.');
                 console.dir(JSON.stringify(result));
 
-                //converting into JSON object
+                //convert into JSON object
                 console.log('Converting to JSON object.');
                 var jsonobject = JSON.parse(JSON.stringify(result));
                 console.log(util.inspect(jsonobject, false, null));
 
                 //read JSON object
                 var cv = new SVY21();
-                for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
+                for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
+                {
                     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
                     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
@@ -321,21 +320,23 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                     console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
                     console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
                     console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
+                    //convert SVY21 to Lat/Long
                     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
-                    var codes = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    var dCodes = codes[0];
-                    var dCodes2 = codes[1];
-        console.log(dCodes);
-        console.log(dCodes2);
+                    //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
+                    var getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    var showlat = getlatlong[0];
+                    var showlong = getlatlong[1];
+                    console.log("Latitude : " + showlat);
+                    console.log("Longitude : " + showlong);
 
-                    //var distance = calculatedistance(lat, long, '1.332401', '103.848438', 'K');
+                    //calculate distance between 2 coordinates
+                    var showdistance = calculatedistance(showlat, showlong, '1.332401', '103.848438', 'K');
                     //round to 3 decimal places
-                    //console.log(Math.round(distance*1000)/1000);
+                    console.log(Math.round(showdistance*1000)/1000);
 
 
                     console.log("----------------------------------------");
-            }
+                }
     
                 console.log('Done.');
 
