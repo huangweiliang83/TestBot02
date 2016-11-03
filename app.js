@@ -311,19 +311,28 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                 //read JSON object
                 var cv = new SVY21();
                 for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) {
-                    console.log("Latitude(SVY21) : "+jsonobject.GetAmenities.Carparking[i].Latitude);
-                    console.log("Longitude(SVY21) : "+jsonobject.GetAmenities.Carparking[i].Longitude);
-                    console.log("CoordX : "+jsonobject.GetAmenities.Carparking[i].CoordX);
-                    console.log("CoordY : "+jsonobject.GetAmenities.Carparking[i].CoordY);
-                    console.log("CarParkingNo : "+jsonobject.GetAmenities.Carparking[i].CarParkingNo);
-                    console.log("CpkAvail : "+jsonobject.GetAmenities.Carparking[i].CpkAvail);
-                    console.log("Address : "+jsonobject.GetAmenities.Carparking[i].Address);
+                    console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
+                    console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
+                    console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
+                    console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
+                    console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
+                    console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
+                    console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
                     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
                     console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
+
+                    var distance = getDistanceFromLatLonInKm(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude, 1.332401, 103.848438);
+                    console.log(distance);
+
+
                     console.log("----------------------------------------");
             }
     
                 console.log('Done.');
+
+
+
+                
                 
                 // Initialization
                 //var cv = new SVY21();
