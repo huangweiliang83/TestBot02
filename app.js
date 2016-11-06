@@ -472,15 +472,12 @@ function getnearestweather()
                     // var nearestcarpark;
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
-                    //console.log("date : ", jsonobject2.channel.item.forecastIssue.date);
+                    
                     console.log("name 1: " + jsonobject2.channel.title);
                     console.log("name 2: " + jsonobject2.channel.item[0].validTime);
+                    console.log("date : ", jsonobject2.channel.item[0].forecastIssue.Cbild[0].date);
                     
-                    
-                for (var i = 0; i < jsonobject2.channel.item[0].area[0].Child[i].length; ++i) 
-                {
-                        console.log("test");
-                }
+                
                     
                     
                     
