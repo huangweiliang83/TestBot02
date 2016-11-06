@@ -458,7 +458,7 @@ function getnearestweather()
                     var jsonobject2 = JSON.parse(JSON.stringify(result));
                     console.log(util.inspect(jsonobject2, false, null));
 
-                    //traverse JSON object
+                    //read and traverse JSON object
                     // var cv = new SVY21();
                     // var nearestdistance = 0;
                     // var showdistanceformat;
@@ -470,7 +470,7 @@ function getnearestweather()
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
                     console.log("name : ", jsonobject2.channel.item.validTime);
-
+                    console.log("length : ", jsonobject2.channel.weatherForecast.length);
 
                     // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                     // {
