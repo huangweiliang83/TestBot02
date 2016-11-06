@@ -470,10 +470,11 @@ function getnearestweather()
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
                     console.log("name : ", jsonobject2.channel.item.validTime);
-                    console.log("length : ", jsonobject2.channel.item.weatherForecast.length);
+                    
 
-                    // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
-                    // {
+                    for (var i = 0; i < jsonobject2.channel.item.weatherForecast.length; ++i) 
+                    {
+                        console.log("name");
                     //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
                     //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
                     //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
@@ -513,7 +514,7 @@ function getnearestweather()
                     //     }
                         
                     //     console.log("----------------------------------------");
-                    // }
+                    }
                     
                     // console.log("Nearest Distance : " + nearestdistance);
                     // console.log("Nearest Car Park : " + nearestcarpark);
