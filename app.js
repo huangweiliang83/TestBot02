@@ -252,7 +252,7 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 
 var eyes = require('eyes');
 var https = require('https');
-var https = require('http');
+var http = require('http');
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
