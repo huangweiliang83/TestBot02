@@ -433,7 +433,7 @@ function getcarparkinformation(carparknoinput)
 function getnearestweather()
 {
 
-    var parser1 = new xml2js.Parser({explicitArray : true, ignoreAttrs : false, explicitChildren : true, explicitRoot : true});
+    var parser1 = new xml2js.Parser({explicitArray : true, ignoreAttrs : false, explicitChildren : false});
 
     http.get('http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=781CF461BB6606ADC767F3B357E848ED3A27067168AB8007', function(res)
     {
