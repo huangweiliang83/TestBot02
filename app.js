@@ -254,7 +254,7 @@ var eyes = require('eyes');
 var https = require('https');
 var http = require('http');
 var xml2js = require('xml2js');
-var parser = new xml2js.Parser({explicitArray : true, ignoreAttrs : false, explicitChildren : true});
+var parser = new xml2js.Parser({explicitArray : true, ignoreAttrs : false});
 var util = require('util');
 
 //=========================================================
