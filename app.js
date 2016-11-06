@@ -380,7 +380,7 @@ function getcarparkinformation()
 {
     var getcarparkno = 'TPMD';
 
-    https.get('http://services2.hdb.gov.sg/webapp/BC16AWCpkInfoXML/BC16SCpkXml?cpkNo='+getcarparkno+'&sysId=BC16&cpkStatus=A', function(res)
+    https.get('https://services2.hdb.gov.sg/webapp/BC16AWCpkInfoXML/BC16SCpkXml?cpkNo='+getcarparkno+'&sysId=BC16&cpkStatus=A', function(res)
     {
         var response_data = '';
         res.setEncoding('utf8');
