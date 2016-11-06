@@ -451,7 +451,9 @@ function getnearestweather()
                 }
                 else 
                 {
-                    eyes.inspect(result);
+                    var inspect = require('eyes').inspector({maxLength: false});
+                    inspect(result);
+                    
 
                     //convert into JSON object
                     console.log('Converting to JSON object.');
