@@ -256,7 +256,7 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 // 1)Parse XML from Server 2)Get Nearest Carpark
 //=========================================================
 
-function getnearestcarpark(a,b){
+
 
 var eyes = require('eyes');
 var https = require('https');
@@ -264,12 +264,12 @@ var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
 
-//var getlatfromuser =  1.332401;
-//var getlongfromuser = 103.848438;
+var getlatfromuser =  1.332401;
+var getlongfromuser = 103.848438;
 
 //https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
-//https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res)
-https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+a+'&latd='+b+'&identifier=CPK&bounds=500', function(res) 
+https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res)
+ 
 {
     var response_data = '';
     res.setEncoding('utf8');
@@ -366,9 +366,6 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
         });
 });
 
-}
-
-getnearestcarpark(1.332401, 103.848438);
 
 //=========================================================
 // Bot Dialogs
