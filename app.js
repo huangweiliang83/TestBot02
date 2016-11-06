@@ -469,7 +469,7 @@ function getnearestweather()
                     // var nearestcarpark;
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
-                    console.log("name : ", jsonobject2.item.validTime);
+                    console.log("name : ", jsonobject2.channel.item.validTime);
 
 
                     // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
