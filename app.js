@@ -453,12 +453,12 @@ function getnearestweather()
                 {
                     eyes.inspect(result);
 
-                    // //convert into JSON object
-                    // console.log('Converting to JSON object.');
-                    // var jsonobject = JSON.parse(JSON.stringify(result));
-                    // console.log(util.inspect(jsonobject, false, null));
+                    //convert into JSON object
+                    console.log('Converting to JSON object.');
+                    var jsonobject2 = JSON.parse(JSON.stringify(result));
+                    console.log(util.inspect(jsonobject2, false, null));
 
-                    // //traverse JSON object
+                    //traverse JSON object
                     // var cv = new SVY21();
                     // var nearestdistance = 0;
                     // var showdistanceformat;
@@ -469,7 +469,9 @@ function getnearestweather()
                     // var nearestcarpark;
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
+                    console.log("Length :" + jsonobject2.channel.item.weatherForecase.length);
 
+                    
                     // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                     // {
                     //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
