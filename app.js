@@ -376,9 +376,14 @@ function getnearestcarpark(latinput, longinput)
     });
 }
 
-function getcarparkinformation()
+//=========================================================
+// 1)Parse XML from Server 2) Get Carpark Information
+//=========================================================
+
+function getcarparkinformation(carparknoinput)
 {
-    var getcarparkno = 'TPMD';
+    //var getcarparkno = 'TPMD';
+    var getcarparkno = carparknoinput;
 
     https.get('https://services2.hdb.gov.sg/webapp/BC16AWCpkInfoXML/BC16SCpkXml?cpkNo='+getcarparkno+'&sysId=BC16&cpkStatus=A', function(res)
     {
@@ -428,20 +433,8 @@ function getcarparkinformation()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 getnearestcarpark('1.332401', '103.848438');
-var result = getcarparkinformation()
+getcarparkinformation('TPMD');
 
 
 //=========================================================
