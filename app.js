@@ -473,7 +473,8 @@ function getnearestweather()
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
                     //console.log("date : ", jsonobject2.channel.item.forecastIssue.date);
-                    console.log("name 1: ", jsonobject2.channel.title);
+                    console.log("name 1: " + jsonobject2.channel.title);
+                    console.log("name 2: " + jsonobject2.channel.item.forecastIssue.date)
                     
 
                     
