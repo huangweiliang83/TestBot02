@@ -41,6 +41,7 @@ var connector = new builder.ChatConnector({
 
 var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
+bot.endConversationAction('goodbye', 'Goodbye:)', { matches: /^.*bye/i });
 
 // Chat with bot using console connector class
 //var connector = new builder.ConsoleConnector().listen();
@@ -70,19 +71,10 @@ fs.readFile(__dirname + '/carpark.xml', function(err, data) {
 
 var SVY21 = (function()
 {
-    // Ref: http://www.linz.govt.nz/geodetic/conversion-coordinates/projection-conversions/transverse-mercator-preliminary-computations/index.aspx
-    
     // WGS84 Datum
     this.a = 6378137;
     this.f = 1 / 298.257223563;
 
-    // SVY21 Projection
-    // Fundamental point: Base 7 at Pierce Resevoir.
-    // Latitude: 1 22 02.9154 N, longitude: 103 49 31.9752 E (of Greenwich).
-
-    // Known Issue: Setting (oLat, oLon) to the exact coordinates specified above
-		// results in computation being slightly off. The values below give the most 
-    // accurate represenation of test data.
     this.oLat = 1.366666;     // origin's lat in degrees
     this.oLon = 103.833333;   // origin's lon in degrees
     this.oN = 38744.572;      // false Northing
@@ -102,7 +94,7 @@ var SVY21 = (function()
 		};
 		this.init();
 
-    this.computeSVY21 = function(lat, lon){
+        this.computeSVY21 = function(lat, lon){
         //Returns a pair (N, E) representing Northings and Eastings in SVY21.
 
         var latR = lat * Math.PI / 180;
@@ -138,14 +130,14 @@ var SVY21 = (function()
         var t4 = t2 * t2;
         var t6 = t4 * t2;
 
-        //	Compute Northing
+        //Compute Northing
         var nTerm1 = w2 / 2 * v * sinLat * cosLat;
         var nTerm2 = w4 / 24 * v * sinLat * cos3Lat * (4 * psi2 + psi - t2);
         var nTerm3 = w6 / 720 * v * sinLat * cos5Lat * ((8 * psi4) * (11 - 24 * t2) - (28 * psi3) * (1 - 6 * t2) + psi2 * (1 - 32 * t2) - psi * 2 * t2 + t4);
         var nTerm4 = w8 / 40320 * v * sinLat * cos7Lat * (1385 - 3111 * t2 + 543 * t4 - t6);
         var N = this.oN + this.k * (M - Mo + nTerm1 + nTerm2 + nTerm3 + nTerm4);
 
-        //	Compute Easting
+        //Compute Easting
         var eTerm1 = w2 / 6 * cos2Lat * (psi - t2);
         var eTerm2 = w4 / 120 * cos4Lat * ((4 * psi3) * (1 - 6 * t2) + psi2 * (1 + 8 * t2) - psi * 2 * t2 + t4);
         var eTerm3 = w6 / 5040 * cos6Lat * (61 - 479 * t2 + 179 * t4 - t6);
@@ -154,28 +146,26 @@ var SVY21 = (function()
         return {N:N, E:E};
 		};
 
-		
-		
 		this.calcM = function(lat, lon){
         var latR = lat * Math.PI / 180;
         return this.a * ((this.A0 * latR) - (this.A2 * Math.sin(2 * latR)) + (this.A4 * Math.sin(4 * latR)) - (this.A6 * Math.sin(6 * latR)));
 		};
 				
-    this.calcRho = function(sin2Lat){
+        this.calcRho = function(sin2Lat){
         var num = this.a * (1 - this.e2);
         var denom = Math.pow(1 - this.e2 * sin2Lat, 3. / 2.);
         return num / denom;
 		};
 
-    this.calcV = function(sin2Lat){
+        this.calcV = function(sin2Lat){
         var poly = 1 - this.e2 * sin2Lat;
         return this.a / Math.sqrt(poly);
 		};
 		
 		
 		
-    this.computeLatLon = function(N, E){
-        //	Returns a pair (lat, lon) representing Latitude and Longitude.
+        this.computeLatLon = function(N, E){
+        //Returns lat, lot
         
 
         var Nprime = N - this.oN;
@@ -214,7 +204,7 @@ var SVY21 = (function()
         var x5 = x3 * x2;
         var x7 = x5 * x2;
 
-        // Compute Latitude
+        //Compute Latitude
         var latFactor = tPrime / (this.k * rhoPrime);
         var latTerm1 = latFactor * ((Eprime * x) / 2);
         var latTerm2 = latFactor * ((Eprime * x3) / 24) * ((-4 * psiPrime2) + (9 * psiPrime) * (1 - tPrime2) + (12 * tPrime2));
@@ -222,7 +212,7 @@ var SVY21 = (function()
         var latTerm4 = latFactor * ((Eprime * x7) / 40320) * (1385 - 3633 * tPrime2 + 4095 * tPrime4 + 1575 * tPrime6);
         var lat = latPrime - latTerm1 + latTerm2 - latTerm3 + latTerm4;
 
-        // Compute Longitude
+        //Compute Longitude
         var secLatPrime = 1. / Math.cos(lat);
         var lonTerm1 = x * secLatPrime;
         var lonTerm2 = ((x3 * secLatPrime) / 6) * (psiPrime + 2 * tPrime2);
@@ -239,7 +229,7 @@ var SVY21 = (function()
 });
 
 //=========================================================
-// Calculate Distance
+// Calculate Distance between 2 Coordinates
 //=========================================================
 
 function calculatedistance(lat1, lon1, lat2, lon2, unit)
@@ -263,19 +253,23 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 
 
 //=========================================================
-// Parse XML from Server
+// 1)Parse XML from Server 2)Get Nearest Carpark
 //=========================================================
+
+function getnearestcarpark(a,b){
+
 var eyes = require('eyes');
 var https = require('https');
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
 
-var getlatfromuser =  1.332401;
-var getlongfromuser = 103.848438;
+//var getlatfromuser =  1.332401;
+//var getlongfromuser = 103.848438;
 
 //https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) {
-https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res) 
+//https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res)
+https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+a+'&latd='+b+'&identifier=CPK&bounds=500', function(res) 
 {
     var response_data = '';
     res.setEncoding('utf8');
@@ -356,46 +350,25 @@ https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22
                         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
                     }
                     
-                
                     console.log("----------------------------------------");
                 }
                 console.log("Nearest Distance : " + nearestdistance);
                 console.log("Nearest Car Park : " + nearestcarpark);
                 console.log("Nearest Car Park No : " + nearestcarparkno);
                 console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
-                console.log('Done.');
-
-
-
-                
-                
-                // Initialization
-                //var cv = new SVY21();
-
-                // Computing SVY21 from Lat/Lon
-                //var lat = 1.2949192688485278;
-                //var lon = 103.77367436885834;
-                //var result = cv.computeSVY21(lat, lon);
-                //console.log(result);
-
-                // Computing Lat/Lon from SVY21
-                //var resultLatLon = cv.computeLatLon(result.N, result.E);
-                //console.log(resultLatLon);
-
-
- 
+                  console.log('Done.'); 
             }
         });
     });
         res.on('error', function(err) 
         {
-        console.log('Got error: ' + err.message);
+            console.log('Got error: ' + err.message);
         });
 });
 
+}
 
-
-
+getnearestcarpark(1.332401, 103.848438);
 
 //=========================================================
 // Bot Dialogs
