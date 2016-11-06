@@ -421,7 +421,8 @@ function getcarparkinformation()
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
 
-                    console.log("length: " +jsonobject1.CarParkInfo.length);    
+                    console.log("carpark Type:", jsonobject1.CarParkType);
+                    //for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i)     
                     //for (var i = 0; i < jsonobject1.CarParkInfo.length; ++i) 
                     // {
                     //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
