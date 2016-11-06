@@ -473,9 +473,9 @@ function getnearestweather()
                     console.log("length : ", jsonobject2.channel.item.weatherForecast.area.length);
                     
 
-                    // for (var i = 0; i < jsonobject2.channel.item.weatherForecast.length; ++i) 
-                    // {
-                    //      console.log("Name : " + jsonobject2.channel.item.weatherForecast[i].name);
+                    for (var i = 0; i < jsonobject2.channel.item.weatherForecast.area.length; ++i) 
+                    {
+                          console.log("Name : " + jsonobject2.channel.item.weatherForecast.area[i].name);
                     // //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
                     //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
                     //     console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
@@ -514,7 +514,7 @@ function getnearestweather()
                     //     }
                         
                     //     console.log("----------------------------------------");
-                    //}
+                    }
                     
                     // console.log("Nearest Distance : " + nearestdistance);
                     // console.log("Nearest Car Park : " + nearestcarpark);
