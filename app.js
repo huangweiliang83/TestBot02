@@ -405,13 +405,12 @@ function getcarparkinformation()
                     console.log('Converting to JSON string.');
                     console.dir(JSON.stringify(result));
 
-                    // //convert into JSON object
-                     console.log('Converting to JSON object.');
-                     var jsonobject1 = JSON.parse(JSON.stringify(result));
-                     console.log(util.inspect(jsonobject1, false, null));
+                    //convert into JSON object
+                    console.log('Converting to JSON object.');
+                    var jsonobject1 = JSON.parse(JSON.stringify(result));
+                    console.log(util.inspect(jsonobject1, false, null));
 
-                    // //traverse JSON object
-                    // var cv = new SVY21();
+                    //traverse JSON object
                     // var nearestdistance = 0;
                     // var showdistanceformat;
                     // var showdistance;
@@ -422,7 +421,8 @@ function getcarparkinformation()
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
 
-                    // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
+                    console.log(jsonobject1.CarParkInfo.length);    
+                    //for (var i = 0; i < jsonobject1.CarParkInfo.length; ++i) 
                     // {
                     //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
                     //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
