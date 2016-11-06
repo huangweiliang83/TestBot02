@@ -254,7 +254,7 @@ var eyes = require('eyes');
 var https = require('https');
 var http = require('http');
 var xml2js = require('xml2js');
-var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
+var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : false});
 var util = require('util');
 
 //=========================================================
@@ -451,8 +451,7 @@ function getnearestweather()
                 }
                 else 
                 {
-                    var inspect = require('eyes').inspector({maxLength: 2048});
-                    inspect(result);
+                    eyes.inspect(result);
                     
 
                     //convert into JSON object
