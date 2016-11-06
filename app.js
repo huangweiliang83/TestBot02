@@ -378,7 +378,7 @@ function getnearestcarpark(latinput, longinput)
 
 function getcarparkinformation()
 {
-    var getcarparkno = TPMD;
+    var getcarparkno = 'TPMD';
 
     https.get('http://services2.hdb.gov.sg/webapp/BC16AWCpkInfoXML/BC16SCpkXml?cpkNo='+getcarparkno+'&sysId=BC16&cpkStatus=A', function(res)
     {
