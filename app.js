@@ -421,7 +421,7 @@ function getcarparkinformation()
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
 
-                    console.log("carpark Type:", jsonobject1.CarParkType);
+                    console.log("carpark Type:", jsonobject1.CarParkInfo.CarParkType);
                     //for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i)     
                     //for (var i = 0; i < jsonobject1.CarParkInfo.length; ++i) 
                     // {
