@@ -474,8 +474,7 @@ function getnearestweather()
 
                     for (var i = 0; i < jsonobject2.channel.item.weatherForecast.length; ++i) 
                     {
-                        console.log("name");
-                    //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
+                         console.log("Name : " + jsonobject2.channel.item.weatherForecast[i].name);
                     //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
                     //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
                     //     console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
