@@ -252,6 +252,7 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 
 var eyes = require('eyes');
 var https = require('https');
+var https = require('http');
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
@@ -431,7 +432,7 @@ function getcarparkinformation(carparknoinput)
 
 function getnearestweather()
 {
-    https.get('https://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=781CF461BB6606ADC767F3B357E848ED3A27067168AB8007', function(res)
+    http.get('http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=781CF461BB6606ADC767F3B357E848ED3A27067168AB8007', function(res)
     {
         var response_data = '';
         res.setEncoding('utf8');
