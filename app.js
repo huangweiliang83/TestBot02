@@ -469,9 +469,9 @@ function getnearestweather()
                     // var nearestcarpark;
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
-                    console.log("Length :" + jsonobject2.channel.item.weatherForecase.length);
+                    console.log("name : ", jsonobject2.item.validTime);
 
-                    
+
                     // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                     // {
                     //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
