@@ -271,114 +271,232 @@ function getnearestcarpark(latinput, longinput)
 // var getlatfromuser =  1.332401;
 // var getlongfromuser = 103.848438;
 
-var getlatfromuser =  latinput;
-var getlongfromuser = longinput;
+    var getlatfromuser =  latinput;
+    var getlongfromuser = longinput;
 
-//https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) 
-https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res)
-{
-    var response_data = '';
-    res.setEncoding('utf8');
-    res.on('data', function(chunk)
+    //https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd=103.848438&latd=1.332401&identifier=CPK&bounds=500', function(res) 
+    https.get('https://services2.hdb.gov.sg/webapp/BN22GetAmenitiesByRangeCoord/BN22SGetAmenitiesByRangeCoord?systemId=FI10&programID=MobileHDB&lngtd='+getlongfromuser+'&latd='+getlatfromuser+'&identifier=CPK&bounds=500', function(res)
     {
-        response_data += chunk;
-    });
-    
-    res.on('end', function() 
-    {
-        parser.parseString(response_data, function(err, result) 
+        var response_data = '';
+        res.setEncoding('utf8');
+        res.on('data', function(chunk)
         {
-            if (err) 
-            {
-                console.log('Got error: ' + err.message);
-            } else 
-            {
-                eyes.inspect(result);
-
-                //convert into JSON into string
-                console.log('Converting to JSON string.');
-                console.dir(JSON.stringify(result));
-
-                //convert into JSON object
-                console.log('Converting to JSON object.');
-                var jsonobject = JSON.parse(JSON.stringify(result));
-                console.log(util.inspect(jsonobject, false, null));
-
-                //traverse JSON object
-                var cv = new SVY21();
-                var nearestdistance = 0;
-                var showdistanceformat;
-                var showdistance;
-                var getlatlong;
-                var showlat;
-                var showlong;
-                var nearestcarpark;
-                var nearestcarparklotavailable;
-                var nearestcarparkno;
-
-                for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
-                {
-                    console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
-                    console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
-                    console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
-                    console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
-                    console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
-                    console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
-                    console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
-                    //convert SVY21 to Lat/Long
-                    cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
-                    getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    showlat = getlatlong[0];
-                    showlong = getlatlong[1];
-                    console.log("Latitude : " + showlat);
-                    console.log("Longitude : " + showlong);
-                    //calculate distance between 2 coordinates
-                    showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
-                    //round to 3 decimal places
-                    showdistanceformat = Math.round(showdistance*1000)/1000;
-                    console.log("Distance(in km) : " + showdistanceformat);
-                    
-                    //find nearest car park by finding shortest distance
-                    var tempdistance = showdistanceformat;
-                    if (i == 0)
-                    {
-                        nearestdistance = tempdistance;
-                        nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
-                        nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
-                        nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
-                    }
-                    if (nearestdistance > tempdistance)
-                    {
-                        nearestdistance = tempdistance;
-                        nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
-                        nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
-                        nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
-                    }
-                    
-                    console.log("----------------------------------------");
-                }
-                console.log("Nearest Distance : " + nearestdistance);
-                console.log("Nearest Car Park : " + nearestcarpark);
-                console.log("Nearest Car Park No : " + nearestcarparkno);
-                console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
-                console.log('Done.');
-                console.log(+latinput);
-                console.log(+longinput); 
-            }
+            response_data += chunk;
         });
-    });
+    
+        res.on('end', function() 
+        {
+            parser.parseString(response_data, function(err, result) 
+            {
+                if (err) 
+                {
+                    console.log('Got error: ' + err.message);
+                }
+                else 
+                {
+                    eyes.inspect(result);
+
+                    //convert into JSON into string
+                    console.log('Converting to JSON string.');
+                    console.dir(JSON.stringify(result));
+
+                    //convert into JSON object
+                    console.log('Converting to JSON object.');
+                    var jsonobject = JSON.parse(JSON.stringify(result));
+                    console.log(util.inspect(jsonobject, false, null));
+
+                    //traverse JSON object
+                    var cv = new SVY21();
+                    var nearestdistance = 0;
+                    var showdistanceformat;
+                    var showdistance;
+                    var getlatlong;
+                    var showlat;
+                    var showlong;
+                    var nearestcarpark;
+                    var nearestcarparklotavailable;
+                    var nearestcarparkno;
+
+                    for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
+                    {
+                        console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
+                        console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
+                        console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
+                        console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
+                        console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
+                        console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
+                        console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
+                        //convert SVY21 to Lat/Long
+                        cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                        //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
+                        getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                        showlat = getlatlong[0];
+                        showlong = getlatlong[1];
+                        console.log("Latitude : " + showlat);
+                        console.log("Longitude : " + showlong);
+                        //calculate distance between 2 coordinates
+                        showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
+                        //round to 3 decimal places
+                        showdistanceformat = Math.round(showdistance*1000)/1000;
+                        console.log("Distance(in km) : " + showdistanceformat);
+                        
+                        //find nearest car park by finding shortest distance
+                        var tempdistance = showdistanceformat;
+                        if (i == 0)
+                        {
+                            nearestdistance = tempdistance;
+                            nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                            nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                            nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
+                        }
+                        if (nearestdistance > tempdistance)
+                        {
+                            nearestdistance = tempdistance;
+                            nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                            nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                            nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
+                        }
+                        
+                        console.log("----------------------------------------");
+                    }
+                    
+                    console.log("Nearest Distance : " + nearestdistance);
+                    console.log("Nearest Car Park : " + nearestcarpark);
+                    console.log("Nearest Car Park No : " + nearestcarparkno);
+                    console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
+                    console.log('Done.');
+                }
+            });
+        });
+
         res.on('error', function(err) 
         {
             console.log('Got error: ' + err.message);
         });
-});
+    });
+}
 
+function getcarparkinformation()
+{
+    var getcarparkno = TPMD;
+
+    https.get('http://services2.hdb.gov.sg/webapp/BC16AWCpkInfoXML/BC16SCpkXml?cpkNo='+getcarparkno+'&sysId=BC16&cpkStatus=A', function(res)
+    {
+        var response_data = '';
+        res.setEncoding('utf8');
+        res.on('data', function(chunk)
+        {
+            response_data += chunk;
+        });
+    
+        res.on('end', function() 
+        {
+            parser.parseString(response_data, function(err, result) 
+            {
+                if (err) 
+                {
+                    console.log('Got error: ' + err.message);
+                }
+                else 
+                {
+                    eyes.inspect(result);
+
+                    //convert into JSON into string
+                    console.log('Converting to JSON string.');
+                    console.dir(JSON.stringify(result));
+
+                    // //convert into JSON object
+                    // console.log('Converting to JSON object.');
+                    // var jsonobject = JSON.parse(JSON.stringify(result));
+                    // console.log(util.inspect(jsonobject, false, null));
+
+                    // //traverse JSON object
+                    // var cv = new SVY21();
+                    // var nearestdistance = 0;
+                    // var showdistanceformat;
+                    // var showdistance;
+                    // var getlatlong;
+                    // var showlat;
+                    // var showlong;
+                    // var nearestcarpark;
+                    // var nearestcarparklotavailable;
+                    // var nearestcarparkno;
+
+                    // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
+                    // {
+                    //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
+                    //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
+                    //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
+                    //     console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
+                    //     console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
+                    //     console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
+                    //     console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
+                    //     //convert SVY21 to Lat/Long
+                    //     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    //     //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
+                    //     getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    //     showlat = getlatlong[0];
+                    //     showlong = getlatlong[1];
+                    //     console.log("Latitude : " + showlat);
+                    //     console.log("Longitude : " + showlong);
+                    //     //calculate distance between 2 coordinates
+                    //     showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
+                    //     //round to 3 decimal places
+                    //     showdistanceformat = Math.round(showdistance*1000)/1000;
+                    //     console.log("Distance(in km) : " + showdistanceformat);
+                        
+                    //     //find nearest car park by finding shortest distance
+                    //     var tempdistance = showdistanceformat;
+                    //     if (i == 0)
+                    //     {
+                    //         nearestdistance = tempdistance;
+                    //         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                    //         nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                    //         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
+                    //     }
+                    //     if (nearestdistance > tempdistance)
+                    //     {
+                    //         nearestdistance = tempdistance;
+                    //         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                    //         nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                    //         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
+                    //     }
+                        
+                    //     console.log("----------------------------------------");
+                    // }
+                    
+                    // console.log("Nearest Distance : " + nearestdistance);
+                    // console.log("Nearest Car Park : " + nearestcarpark);
+                    // console.log("Nearest Car Park No : " + nearestcarparkno);
+                    // console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
+                    // console.log('Done.');
+                }
+            });
+        });
+
+        res.on('error', function(err) 
+        {
+            console.log('Got error: ' + err.message);
+        });
+    });
 }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 getnearestcarpark('1.332401', '103.848438');
+var result = getcarparkinformation()
+
 
 //=========================================================
 // Bot Dialogs
