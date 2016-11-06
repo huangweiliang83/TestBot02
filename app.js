@@ -451,7 +451,7 @@ function getnearestweather()
                 }
                 else 
                 {
-                    var inspect = require('eyes').inspector({maxLength: false});
+                    var inspect = require('eyes').inspector({maxLength: 2048});
                     inspect(result);
                     
 
