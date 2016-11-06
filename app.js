@@ -250,7 +250,11 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 }
 
 
-
+var eyes = require('eyes');
+var https = require('https');
+var xml2js = require('xml2js');
+var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
+var util = require('util');
 
 //=========================================================
 // 1)Parse XML from Server 2)Get Nearest Carpark
@@ -258,11 +262,11 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
 
 function getnearestcarpark(latinput, longinput)
 {
-var eyes = require('eyes');
-var https = require('https');
-var xml2js = require('xml2js');
-var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
-var util = require('util');
+// var eyes = require('eyes');
+// var https = require('https');
+// var xml2js = require('xml2js');
+// var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
+// var util = require('util');
 
 // var getlatfromuser =  1.332401;
 // var getlongfromuser = 103.848438;
