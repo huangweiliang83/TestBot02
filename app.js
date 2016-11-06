@@ -477,7 +477,7 @@ function getnearestweather()
                     console.log("name 2: " + jsonobject2.channel.item[0].validTime);
                     
                     
-                for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area[0].Child[0].length; ++i) 
+                for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area[1].Child[2].length; ++i) 
                 {
                         console.log("test");
                 }
