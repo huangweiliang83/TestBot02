@@ -407,8 +407,8 @@ function getcarparkinformation()
 
                     // //convert into JSON object
                      console.log('Converting to JSON object.');
-                     var jsonobject = JSON.parse(JSON.stringify(result));
-                     console.log(util.inspect(jsonobject, false, null));
+                     var jsonobject1 = JSON.parse(JSON.stringify(result));
+                     console.log(util.inspect(jsonobject1, false, null));
 
                     // //traverse JSON object
                     // var cv = new SVY21();
