@@ -429,9 +429,12 @@ function getcarparkinformation(carparknoinput)
 //=========================================================
 // 1)Parse XML from Server 2)Get Nearest 2-Hour Weather
 //=========================================================
-
 function getnearestweather()
 {
+    var forecastobj = {
+        BR: Mist,
+        CL: Cloudy
+    };
 
     var parser1 = new xml2js.Parser({explicitArray : true, attrkey : 'Child'});
 
@@ -506,14 +509,8 @@ function getnearestweather()
                     console.log("Nearest Forecast : " + nearestForeCast);
                     console.log("Nearest Town : " + nearestForeCastName);
 
-                    if (nearestForeCast == "CL")
-                    {
-                        var forecast = "CL";
-                        console.log("Good");
-                        //
-                    }
-
-
+                    var x = forecastobj["CL"];
+                    console.log("check forecast:" + x);
                 }
             });
         });
