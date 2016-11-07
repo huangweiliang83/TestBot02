@@ -429,7 +429,7 @@ function getcarparkinformation(carparknoinput)
 //=========================================================
 // 1)Parse XML from Server 2)Get Nearest 2-Hour Weather
 //=========================================================
-function getnearestweather()
+function getnearestweather(latinput, longinput)
 {
     var forecastobj = {
         BR: "Mist",
@@ -467,6 +467,11 @@ function getnearestweather()
         WS: "Windy, Showers"
     };
 
+    var getlatfromuser =  latinput;
+    var getlongfromuser = longinput;
+    //var getlatfromuser =  1.332401;
+    //var getlongfromuser = 103.848438;
+
     var parser1 = new xml2js.Parser({explicitArray : true, attrkey : 'Child'});
 
     http.get('http://api.nea.gov.sg/api/WebAPI/?dataset=2hr_nowcast&keyref=781CF461BB6606ADC767F3B357E848ED3A27067168AB8007', function(res)
@@ -496,9 +501,6 @@ function getnearestweather()
                     console.log(util.inspect(jsonobject2, false, null));
 
                     //read and traverse JSON object
-                    var getlatfromuser =  1.332401;
-                    var getlongfromuser = 103.848438;
-                    
                     var nearestdistance1 = 0;
                     var showdistanceformat1;
                     var showdistance1;
