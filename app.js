@@ -503,8 +503,15 @@ function getnearestweather()
                         }
                     }
                     console.log("Nearest Distance : " + nearestdistance1);
-                    console.log("Nearest ForeCast : " + nearestForeCast);
-                    console.log("Nearest ForeCastName : " + nearestForeCastName);
+                    console.log("Nearest Forecast : " + nearestForeCast);
+                    console.log("Nearest Town : " + nearestForeCastName);
+
+                    if (nearestForeCast == "BR")
+                    {
+                        var forecast = "BR";
+                    }
+
+
                 }
             });
         });
