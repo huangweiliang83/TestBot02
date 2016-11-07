@@ -481,13 +481,13 @@ function getnearestweather()
                     console.log("date3 : " +jsonobject2.channel.item[0].forecastIssue[0].Child.date);
                     //console.log("4 : ", + jsonobject2.channel.item[0].title);
                 console.log("length  "+jsonobject2.channel.item[0].weatherForecast[0].area.length)
-                    //for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area.length; ++i){
-                    //    console.log("Name : " + jsonobject2.channel.item.weatherForecast[0].area.Child.name);
+                    for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area.length; ++i){
+                        console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area.Child.name);
                        // console.log("Name : " + jsonobject2.channel.item.weatherForecast[i].name);
                         //console.log("Name : " + jsonobject2.channel.item.weatherForecast[i].name);
                         //console.log("Name : " + jsonobject2.channel.item.weatherForecast[i].name);
 
-                  //  }
+                    }
                     
                 
                     
