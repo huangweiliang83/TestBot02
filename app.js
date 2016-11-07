@@ -486,7 +486,6 @@ function getnearestweather()
                         console.log("Latitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat);
                         console.log("Longitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon);
                         console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
-                       
                     }
                    
 
