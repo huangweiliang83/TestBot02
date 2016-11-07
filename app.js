@@ -431,40 +431,76 @@ function getcarparkinformation(carparknoinput)
 //=========================================================
 function getnearestweather(latinput, longinput)
 {
+    // var forecastobj = {
+    //     BR: "Mist",
+    //     CL: "Cloudy",
+    //     CR: "Drizzle",
+    //     FA: "Fair(Day)",
+    //     FG: "Fog",
+    //     FN: "Fair(Night)",
+    //     FW: "Fair & Warm",
+    //     HG: "Heavy Thundery Showers with Gusty Winds",
+    //     HR: "Heavy Rain",
+    //     HS: "Heavy Showers",
+    //     HT: "Heavy Thundery Showers",
+    //     HZ: "Hazy",
+    //     LH: "Slightly Hazy",
+    //     LR: "Light Rain",
+    //     LS: "Light Showers",
+    //     OC: "Overcast",
+    //     PC: "Partly Cloudy (Day)",
+    //     PN: "Partly Cloudy (Night)",
+    //     PS: "Passing Showers",
+    //     RA: "Moderate Rain",
+    //     SH: "Showers",
+    //     SK: "Strong Winds,Showers",
+    //     SN: "Snow",
+    //     SR: "Strong Winds, Rain",
+    //     SS: "Snow Showers",
+    //     SU: "Sunny",
+    //     SW: "Strong Winds",
+    //     TL: "Thundery Showers",
+    //     WC: "Windy,Cloudy",
+    //     WD: "Windy",
+    //     WF: "Windy,Fair",
+    //     WR: "Windy,Rain",
+    //     WS: "Windy, Showers"
+    // };
+
     var forecastobj = {
-        BR: "Mist",
-        CL: "Cloudy",
-        CR: "Drizzle",
-        FA: "Fair(Day)",
-        FG: "Fog",
-        FN: "Fair(Night)",
-        FW: "Fair & Warm",
-        HG: "Heavy Thundery Showers with Gusty Winds",
-        HR: "Heavy Rain",
-        HS: "Heavy Showers",
-        HT: "Heavy Thundery Showers",
-        HZ: "Hazy",
-        LH: "Slightly Hazy",
-        LR: "Light Rain",
-        LS: "Light Showers",
-        OC: "Overcast",
-        PC: "Partly Cloudy (Day)",
-        PN: "Partly Cloudy (Night)",
-        PS: "Passing Showers",
-        RA: "Moderate Rain",
-        SH: "Showers",
-        SK: "Strong Winds,Showers",
-        SN: "Snow",
-        SR: "Strong Winds, Rain",
-        SS: "Snow Showers",
-        SU: "Sunny",
-        SW: "Strong Winds",
-        TL: "Thundery Showers",
-        WC: "Windy,Cloudy",
-        WD: "Windy",
-        WF: "Windy,Fair",
-        WR: "Windy,Rain",
-        WS: "Windy, Showers"
+        BR: "Not Raining",
+        CL: "Not Raining",
+        CR: "Raining",
+        FA: "Not Raining",
+        FG: "Not Raining",
+        FN: "Not Raining",
+        FW: "Not Raining",
+        HG: "Raining",
+        HR: "Raining",
+        HS: "Raining",
+        HT: "Raining",
+        HZ: "Not Raining",
+        LH: "Not Raining",
+        LR: "Raining",
+        LS: "Raining",
+        OC: "Not Raining",
+        PC: "Not Raining",
+        PN: "Not Raining",
+        PS: "Raining",
+        RA: "Raining",
+        SH: "Raining",
+        SK: "Raining",
+        SN: "Not Raining",
+        SR: "Raining",
+        SS: "Not Raining",
+        SU: "Not Raining",
+        SW: "Not Raining",
+        TL: "Raining",
+        WC: "Not Raining",
+        WD: "Not Raining",
+        WF: "Not Raining",
+        WR: "Raining",
+        WS: "Raining"
     };
 
     var getlatfromuser =  latinput;
@@ -538,12 +574,12 @@ function getnearestweather(latinput, longinput)
                             nearestForeCastName = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name;
                         }
                     }
-                    console.log("Nearest Distance : " + nearestdistance1);
-                    console.log("Nearest Forecast : " + nearestForeCast);
+                    console.log("Distance to Nearest Town : " + nearestdistance1);
+                    console.log("Forecast in Nearest Town : " + nearestForeCast);
                     console.log("Nearest Town : " + nearestForeCastName);
 
                     var forecast = forecastobj[nearestForeCast];
-                    console.log("check forecast:" + forecast);
+                    console.log("Forecast in Current Location : " + forecast);
                 }
             });
         });
@@ -554,16 +590,6 @@ function getnearestweather(latinput, longinput)
         });
     });
 }
-
-
-
-
-
-
-
-
-
-
 
 
 getnearestcarpark('1.332401', '103.848438');
