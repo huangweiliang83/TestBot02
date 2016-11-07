@@ -472,6 +472,9 @@ function getnearestweather()
                     // var nearestcarpark;
                     // var nearestcarparklotavailable;
                     // var nearestcarparkno;
+
+                    var getlatfromuser =  1.332401;
+                    var getlongfromuser = 103.848438;
                     
                     console.log("name 1: " + jsonobject2.channel.title);
                     console.log("name 2: " + jsonobject2.channel.source);
@@ -480,12 +483,16 @@ function getnearestweather()
                     console.log("date3 : " +jsonobject2.channel.item[0].title);
                     console.log("date3 : " +jsonobject2.channel.item[0].forecastIssue[0].Child.date);
                     //console.log("4 : ", + jsonobject2.channel.item[0].title);
-                console.log("length  "+jsonobject2.channel.item[0].weatherForecast[0].area.length)
+                    console.log("length  "+jsonobject2.channel.item[0].weatherForecast[0].area.length)
                     for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area.length; ++i){
                         console.log("forecast : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.forecast);
                         console.log("Latitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat);
                         console.log("Longitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon);
                         console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
+                        showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
+                        //round to 3 decimal places
+                        showdistanceformat = Math.round(showdistance*1000)/1000;
+                        console.log("Distance(in km) : " + showdistanceformat);
                     }
                    
 
