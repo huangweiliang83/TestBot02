@@ -476,6 +476,15 @@ function getnearestweather()
                     var getlatfromuser =  1.332401;
                     var getlongfromuser = 103.848438;
                     
+                     var nearestdistance = 0;
+                    var showdistanceformat;
+                    var showdistance;
+                    
+                    var showlat;
+                    var showlong;
+                    var nearestForeCast;
+                    var nearestForeCastName;
+
                     console.log("name 1: " + jsonobject2.channel.title);
                     console.log("name 2: " + jsonobject2.channel.source);
                     //console.log("date1 : " +jsonobject2.channel.item[0].forecastIssue[0]);
@@ -485,18 +494,34 @@ function getnearestweather()
                     //console.log("4 : ", + jsonobject2.channel.item[0].title);
                     console.log("length  "+jsonobject2.channel.item[0].weatherForecast[0].area.length)
                     for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area.length; ++i){
-                        console.log("forecast : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.forecast);
+                        //console.log("forecast : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.forecast);
                        // console.log("Latitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat);
                        // console.log("Longitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon);
-                        console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
-                        var showlat = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat;
-                        var showlong = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon;
+                        //console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
+                        showlat = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat;
+                        showlong = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon;
                         showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
                         //round to 3 decimal places
                         showdistanceformat = Math.round(showdistance*1000)/1000;
                         console.log("Distance(in km) : " + showdistanceformat);
+
+                        var tempdistance = showdistanceformat;
+                        if (i == 0)
+                        {
+                            nearestdistance = tempdistance;
+                            nearestForeCast = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.forecast;
+                            nearestForeCastName = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name;
+                        }
+                        if (nearestdistance > tempdistance)
+                        {
+                            nearestdistance = tempdistance;
+                            nearestForeCast = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.forecast;
+                            nearestForeCastName = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name;
+                        }
                     }
-                   
+                    console.log("Nearest Distance : " + nearestdistance);
+                    console.log("Nearest ForeCast : " + nearestForeCast);
+                    console.log("Nearest ForeCastName : " + nearestForeCastName);
 
                     //for (var i = 0; i < jsonobject2.channel.item.weatherForecast.length; ++i) 
                     //{
