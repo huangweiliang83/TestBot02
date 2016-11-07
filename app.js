@@ -488,12 +488,7 @@ function getnearestweather()
                         console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
                        
                     }
-                    
-                
-                    
-                    
-                    
-                    
+                   
 
                     //for (var i = 0; i < jsonobject2.channel.item.weatherForecast.length; ++i) 
                     //{
