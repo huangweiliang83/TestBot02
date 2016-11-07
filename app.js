@@ -568,7 +568,7 @@ function getnearestweather(latinput, longinput)
 
 getnearestcarpark('1.332401', '103.848438');
 getcarparkinformation('TPMD');
-var x = getnearestweather()
+getnearestweather('1.332401', '103.848438');
 
 
 //=========================================================
