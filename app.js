@@ -489,6 +489,8 @@ function getnearestweather()
                         console.log("Latitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat);
                         console.log("Longitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon);
                         console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
+                        var showlat = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat;
+                        var showlong = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon;
                         showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
                         //round to 3 decimal places
                         showdistanceformat = Math.round(showdistance*1000)/1000;
