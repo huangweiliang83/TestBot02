@@ -486,8 +486,8 @@ function getnearestweather()
                     console.log("length  "+jsonobject2.channel.item[0].weatherForecast[0].area.length)
                     for (var i = 0; i < jsonobject2.channel.item[0].weatherForecast[0].area.length; ++i){
                         console.log("forecast : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.forecast);
-                        console.log("Latitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat);
-                        console.log("Longitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon);
+                       // console.log("Latitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat);
+                       // console.log("Longitude : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon);
                         console.log("Name : " + jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.name);
                         var showlat = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lat;
                         var showlong = jsonobject2.channel.item[0].weatherForecast[0].area[i].Child.lon;
