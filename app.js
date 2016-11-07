@@ -475,8 +475,9 @@ function getnearestweather()
                     
                     console.log("name 1: " + jsonobject2.channel.title);
                     console.log("name 2: " + jsonobject2.channel.source);
-                    console.log("date1 : " +jsonobject2.channel.item[0].forecastIssue[0]);
-                    console.log("date2 : " +jsonobject2.channel.item[0].forecastIssue[0].Child);
+                    //console.log("date1 : " +jsonobject2.channel.item[0].forecastIssue[0]);
+                    //console.log("date2 : " +jsonobject2.channel.item[0].forecastIssue[0].Child);
+                    console.log("date3 : " +jsonobject2.channel.item[0].title);
                     console.log("date3 : " +jsonobject2.channel.item[0].forecastIssue[0].Child.date);
                     //console.log("4 : ", + jsonobject2.channel.item[0].title);
                 
