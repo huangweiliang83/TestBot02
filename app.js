@@ -506,9 +506,10 @@ function getnearestweather()
                     console.log("Nearest Forecast : " + nearestForeCast);
                     console.log("Nearest Town : " + nearestForeCastName);
 
-                    if (nearestForeCast == "BR")
+                    if (nearestForeCast == "CL")
                     {
-                        var forecast = "BR";
+                        var forecast = "CL";
+                        console.log("Good");
                     }
 
 
