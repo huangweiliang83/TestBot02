@@ -510,6 +510,7 @@ function getnearestweather()
                     {
                         var forecast = "CL";
                         console.log("Good");
+                        //
                     }
 
 
