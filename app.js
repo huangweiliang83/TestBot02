@@ -432,8 +432,8 @@ function getcarparkinformation(carparknoinput)
 function getnearestweather()
 {
     var forecastobj = {
-        BR: Mist,
-        CL: Cloudy
+        BR: "Mist",
+        CL: "Cloudy"
     };
 
     var parser1 = new xml2js.Parser({explicitArray : true, attrkey : 'Child'});
