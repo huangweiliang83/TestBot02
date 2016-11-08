@@ -602,7 +602,9 @@ getnearestweather('1.332401', '103.848438');
 //=========================================================
 
 var cv1 = new SVY21();
-var getlatlong1;
+var getlatfromuser =  1.332401;
+var getlongfromuser = 103.848438;
+
 
 var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
 var options = {
@@ -617,27 +619,35 @@ function callback(error, response, body)
 {
     if (!error && response.statusCode == 200)
     {
+        //Parse data
         var jsonobject3 = JSON.parse(body);
         console.log("parse data from URA");
         console.log(util.inspect(body, false, null));
         
         for (var i = 0; i < jsonobject3.Result.length; ++i)
         {
+                //Find car park lot availability for cars
                 if (jsonobject3.Result[i].lotType == "C")
                 {
                 console.log("URA Carpark No : " + jsonobject3.Result[i].carparkNo);
-                console.log("URA Lot Type : " + jsonobject3.Result[i].lotType);
+                console.log("URA Carpark Lot Type : " + jsonobject3.Result[i].lotType);
                 console.log("URA Carpark Lot Availability : " + jsonobject3.Result[i].lotsAvailable);
-                console.log("URA Coordinates : " + jsonobject3.Result[i].geometries[0].coordinates);
+                console.log("URA Carpark Coordinates : " + jsonobject3.Result[i].geometries[0].coordinates);
                 var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
                 var uracoordinatesresult = uracoordinates.split(",");
-                console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
-                console.log("URA Coordinates Long : " + uracoordinatesresult[1]);
-                var getlatlong1 = cv1.computeLatLon(uracoordinatesresult[0], uracoordinatesresult[1]);
-                var showlat1 = getlatlong1[0];
-                var showlong1 = getlatlong1[1];
-                        console.log("Latitude : " + showlat1);
-                        console.log("Longitude : " + showlong1);
+                console.log("URA Carpark Coordinates Latitude (SVY21) : " + uracoordinatesresult[0]);
+                console.log("URA Carpark Coordinates Longitude (SVY21) : " + uracoordinatesresult[1]);
+                //Convert SVY21 to Lat/Long
+                var getlatlong2 = cv1.computeLatLon(uracoordinatesresult[0], uracoordinatesresult[1]);
+                var showlat2 = getlatlong2[0];
+                var showlong2 = getlatlong2[1];
+                console.log("URA Carpark Latitude : " + showlat2);
+                console.log("URA Carpark Longitude : " + showlong2);
+                //Calculate distance between URA Carpark and user current location
+                var showdistance2 = calculatedistance(showlat2, showlong2, getlatfromuser, getlongfromuser, 'K');
+                //round to 3 decimal places
+                var showdistanceformat2 = Math.round(showdistance2*1000)/1000;
+                console.log("Distance(in km) : " + showdistanceformat2);
                 }
         }
   }
