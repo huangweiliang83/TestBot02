@@ -633,7 +633,7 @@ function callback(error, response, body)
                 var uracoordinatesresult = uracoordinates.split(",");
                 console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
                 console.log("URA Coordinates Long : " + uracoordinatesresult[1]);
-                getlatlong1 = cv1.computeLatLon(uracoordinatesresult[0], uracoordinatesresult[1]);
+                var getlatlong1 = cv1.computeLatLon(uracoordinatesresult[0], uracoordinatesresult[1]);
                 var showlat1 = getlatlong1[0];
                 var showlong1 = getlatlong[1];
                         console.log("Latitude : " + showlat1);
