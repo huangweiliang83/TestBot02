@@ -717,6 +717,11 @@ getnearestURACarpark('1.332401', '103.848438');
             var jsonobject4 = JSON.parse(body);
             console.log("parse data from URA carpark");
             console.log(util.inspect(body, false, null));
+
+             for (var i = 0; i < jsonobject4.Result.length; ++i)
+            {
+                console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
+            }
         }
     }
 
