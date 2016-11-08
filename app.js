@@ -617,9 +617,7 @@ function callback(error, response, body)
         var jsonobject3 = JSON.parse(body);
         console.log("parse data from URA");
         console.log(util.inspect(body, false, null));
-        //console.log("URA Coordinates : " + jsonobject3.Result[0].geometries[0].coordinates);
-
-
+        
         for (var i = 0; i < jsonobject3.Result.length; ++i)
         {
                 if (jsonobject3.Result[i].lotType == "C")
@@ -628,9 +626,9 @@ function callback(error, response, body)
                 console.log("URA Lot Type : " + jsonobject3.Result[i].lotType);
                 console.log("URA Carpark Lot Availability : " + jsonobject3.Result[i].lotsAvailable);
                 console.log("URA Coordinates : " + jsonobject3.Result[i].geometries[0].coordinates);
-                //var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
-                //var uracoordinatesresult = uracoordinates.split(",");
-                //console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
+                var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
+                var uracoordinatesresult = uracoordinates.split(",");
+                console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
                 }
         }
   }
