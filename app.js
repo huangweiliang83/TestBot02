@@ -675,11 +675,8 @@ function getnearestURACarpark(latinput, longinput)
                     }
             }
 
-            console.log("Nearest URA Carpark (Distance): " + nearestdistance2);
+            console.log("Nearest URA Carpark (Distance) : " + nearestdistance2);
             console.log("Nearest URA Carpark (Lot No) : " + nearestURAcarparklot);
-
-            var uracarparkaddress = getnearestURACarparkInformation(nearestURAcarparklot);
-            console.log("Nearest URA Carpark (Address) : " + uracarparkaddress);
             console.log("Nearest URA Carpark (Lot Availability) : " + nearestURAcarparklotavailability);
         }
     }
@@ -694,7 +691,6 @@ function getnearestURACarpark(latinput, longinput)
 
 function getnearestURACarparkInformation(carparknoinput)
 {
-    var showuracarparkaddress;
     var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Details',
@@ -732,7 +728,7 @@ function getnearestURACarparkInformation(carparknoinput)
                         if (jsonobject4.Result[i].ppCode == geturacarparkfromuser)
                         {
                             console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
-                            showuracarparkaddress = jsonobject4.Result[i].ppName;
+                            var showuracarparkaddress = jsonobject4.Result[i].ppName;
                             
                         }
                         
@@ -744,7 +740,7 @@ function getnearestURACarparkInformation(carparknoinput)
     }
 
     request(options, callback);
-    return showuracarparkaddress;
+
 
 }
 
@@ -752,7 +748,7 @@ getnearestcarpark('1.332401', '103.848438');
 getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
-//getnearestURACarparkInformation('K0087');
+getnearestURACarparkInformation('K0087');
 
 
 
