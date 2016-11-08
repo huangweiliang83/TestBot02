@@ -627,7 +627,7 @@ function callback(error, response, body)
                 console.log("URA Carpark No : " + jsonobject3.Result[i].carparkNo);
                 console.log("URA Lot Type : " + jsonobject3.Result[i].lotType);
                 console.log("URA Carpark Lot Availability : " + jsonobject3.Result[i].lotsAvailable);
-                
+                console.log("URA Coordinates : " + jsonobject3.Result[i].geometries[i].coordinates);
                 }
         }
   }
