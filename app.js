@@ -679,7 +679,7 @@ function getnearestURACarpark(latinput, longinput)
             console.log("Nearest URA Carpark (Lot No) : " + nearestURAcarparklot);
 
             var uracarparkaddress = getnearestURACarparkInformation(nearestURAcarparklot);
-            console.log("Nearest URA Carpark (Address) : " + showuracarparkaddress);
+            console.log("Nearest URA Carpark (Address) : " + uracarparkaddress);
             console.log("Nearest URA Carpark (Lot Availability) : " + nearestURAcarparklotavailability);
         }
     }
