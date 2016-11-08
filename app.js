@@ -629,7 +629,7 @@ function callback(error, response, body)
                 console.log("URA Carpark Lot Availability : " + jsonobject3.Result[i].lotsAvailable);
                 console.log("URA Coordinates : " + jsonobject3.Result[i].geometries[0].coordinates);
                 var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
-                var uracoordinatesresult = str.split(,);
+                var uracoordinatesresult = str.split(',');
                 console.log("URA Coordinates Result : " + uracoordinatesresult);
                 }
         }
