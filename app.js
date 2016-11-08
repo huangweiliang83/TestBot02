@@ -732,7 +732,7 @@ function getnearestURACarparkInformation(carparknoinput)
                         {
                             console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
                             var showuracarparkaddress = jsonobject4.Result[i].ppName;
-                            return showuracarparkaddress;
+                            
                         }
                         
                         
@@ -743,6 +743,7 @@ function getnearestURACarparkInformation(carparknoinput)
     }
 
     request(options, callback);
+    return showuracarparkaddress;
 
 }
 
