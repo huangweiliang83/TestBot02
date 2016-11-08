@@ -724,8 +724,13 @@ getnearestURACarpark('1.332401', '103.848438');
                 //Find car park details for cars
                     if (jsonobject4.Result[i].vehCat == "Car" && jsonobject4.Result[i].weekdayMin == "30 mins")
                     {
-                        console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
-                        console.log("URA Carpark Lot No : " + jsonobject4.Result[i].ppCode);
+                        //console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
+                        //console.log("URA Carpark Lot No : " + jsonobject4.Result[i].ppCode);
+
+                        if (jsonobject4.Result[i].ppCode == geturacarparkfromuser)
+                        {
+                            console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
+                        }
                         
                         
                         
