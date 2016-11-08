@@ -619,7 +619,7 @@ function callback(error, response, body)
         console.log(util.inspect(body, false, null));
         console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
     
-        for (var i = 0; i < jsonobject3.Result[0].length; ++i)
+        for (var i = 0; i < jsonobject3.Result.length; ++i)
         {
                 console.log("carparknoURA: " + jsonobject3.Result[i].carparkNo);
         }
