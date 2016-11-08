@@ -736,7 +736,7 @@ getnearestURACarpark('1.332401', '103.848438');
                         // var showlong3 = getlatlong3[1];
                         // console.log("URA Carpark Latitude : " + showlat3);
                         // console.log("URA Carpark Longitude : " + showlong3);
-                        console.log(util.inspect(jsonobject4, false, null));
+                        
                     }
             }
         }
