@@ -610,13 +610,19 @@ var options = {
   }
 };
 
-function callback(error, response, body) {
-  if (!error && response.statusCode == 200) {
-    var jsonobject3 = JSON.parse(body);
-    console.log("parse data from URA");
-    console.log(util.inspect(body, false, null));
-    console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
-    console.log("length" + jsonobject3.Result[0].length);
+function callback(error, response, body) 
+{
+    if (!error && response.statusCode == 200)
+    {
+        var jsonobject3 = JSON.parse(body);
+        console.log("parse data from URA");
+        console.log(util.inspect(body, false, null));
+        //console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
+    
+        for (var i = 0; i < jsonobject3.Result[0].length; ++i)
+        {
+                console.log("carparknoURA: " + jsonobject3.Result[i].carparkNo);
+        }
   }
 }
 
