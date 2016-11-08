@@ -708,6 +708,7 @@ function getnearestURACarparkInformation(carparknoinput)
     {
         var cv2 = new SVY21();
         var geturacarparkfromuser =  carparknoinput;
+        var showuracarparkaddress;
         //var geturacarparkfromuser =  "K0087";
         //var getlatfromuser =  1.332401;
         //var getlongfromuser = 103.848438;
@@ -731,7 +732,7 @@ function getnearestURACarparkInformation(carparknoinput)
                         if (jsonobject4.Result[i].ppCode == geturacarparkfromuser)
                         {
                             console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
-                            var showuracarparkaddress = jsonobject4.Result[i].ppName;
+                            showuracarparkaddress = jsonobject4.Result[i].ppName;
                             
                         }
                         
