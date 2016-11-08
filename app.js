@@ -685,13 +685,6 @@ function getnearestURACarpark(latinput, longinput)
 
 }
 
-getnearestcarpark('1.332401', '103.848438');
-getcarparkinformation('TPMD');
-getnearestweather('1.332401', '103.848438');
-getnearestURACarpark('1.332401', '103.848438');
-getnearestURACarpark('K0087');
-
-
 //=========================================================
 // 1)Parse JSON from Server 2)Get Nearest URA Carpark Information
 //=========================================================
@@ -747,6 +740,12 @@ function getnearestURACarparkInformation(carparknoinput)
     request(options, callback);
 
 }
+
+getnearestcarpark('1.332401', '103.848438');
+getcarparkinformation('TPMD');
+getnearestweather('1.332401', '103.848438');
+getnearestURACarpark('1.332401', '103.848438');
+getnearestURACarparkInformation('K0087');
 
 
 
