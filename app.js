@@ -601,17 +601,19 @@ getnearestweather('1.332401', '103.848438');
 // 1)Parse XML from Server 2)Get Nearest URA Carpark
 //=========================================================
 
+var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
 var options = {
-  url: 'https://www.ura.gov.sg/uraDataService/insertNewToken.action',
+  url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_ Park_Availability',
   headers: {
-    'AccessKey': '0d5cce33-3002-451b-8f53-31e8c4c54477'
+    'AccessKey' : '0d5cce33-3002-451b-8f53-31e8c4c54477',
+    'Token' : token
   }
 };
 
 function callback(error, response, body) {
   if (!error && response.statusCode == 200) {
     var info = JSON.parse(body);
-    console.log("parse token");
+    console.log("parse data from URA");
     console.log(util.inspect(body, false, null));
 
   }
