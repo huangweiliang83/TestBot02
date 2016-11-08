@@ -256,6 +256,7 @@ var http = require('http');
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
+var request = require('request');
 
 //=========================================================
 // 1)Parse XML from Server 2)Get Nearest Carpark
@@ -595,6 +596,29 @@ function getnearestweather(latinput, longinput)
 getnearestcarpark('1.332401', '103.848438');
 getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
+
+//=========================================================
+// 1)Parse XML from Server 2)Get Nearest URA Carpark
+//=========================================================
+
+var options = {
+  url: 'https://www.ura.gov.sg/uraDataService/insertNewToken.action',
+  headers: {
+    'AccessKey': '0d5cce33-3002-451b-8f53-31e8c4c54477'
+  }
+};
+
+function callback(error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var info = JSON.parse(body);
+    console.log(util.inspect(body, false, null));
+    //console.log(body)
+
+  }
+}
+ 
+request(options, callback);
+
 
 
 //=========================================================
