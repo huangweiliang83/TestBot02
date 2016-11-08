@@ -601,6 +601,9 @@ getnearestweather('1.332401', '103.848438');
 // 1)Parse XML from Server 2)Get Nearest URA Carpark
 //=========================================================
 
+var cv1 = new SVY21();
+var getlatlong1;
+
 var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
 var options = {
   url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability',
@@ -630,6 +633,11 @@ function callback(error, response, body)
                 var uracoordinatesresult = uracoordinates.split(",");
                 console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
                 console.log("URA Coordinates Long : " + uracoordinatesresult[1]);
+                getlatlong1 = cv1.computeLatLon(uracoordinatesresult[0], uracoordinatesresult[1]);
+                var showlat1 = getlatlong1[0];
+                var showlong1 = getlatlong[1];
+                        console.log("Latitude : " + showlat1);
+                        console.log("Longitude : " + showlong1);
                 }
         }
   }
