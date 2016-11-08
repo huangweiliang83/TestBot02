@@ -612,14 +612,16 @@ var options = {
 
 function callback(error, response, body) {
   if (!error && response.statusCode == 200) {
-    var info = JSON.parse(body);
+    var jsonobject3 = JSON.parse(body);
     console.log("parse data from URA");
     console.log(util.inspect(body, false, null));
 
   }
 }
- 
+
 request(options, callback);
+
+console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
 
 
 
