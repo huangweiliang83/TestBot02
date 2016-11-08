@@ -616,7 +616,7 @@ function callback(error, response, body) {
     console.log("parse data from URA");
     console.log(util.inspect(body, false, null));
     console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
-    console.log("length" + jsonobject3.result[0].length);
+    console.log("length" + jsonobject3.Result[0].length);
   }
 }
 
