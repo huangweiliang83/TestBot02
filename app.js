@@ -677,6 +677,9 @@ function getnearestURACarpark(latinput, longinput)
 
             console.log("Nearest URA Carpark (Distance): " + nearestdistance2);
             console.log("Nearest URA Carpark (Lot No) : " + nearestURAcarparklot);
+
+            var uracarparkaddress = getnearestURACarparkInformation(nearestURAcarparklot);
+            console.log("Nearest URA Carpark (Address) : " + showuracarparkaddress);
             console.log("Nearest URA Carpark (Lot Availability) : " + nearestURAcarparklotavailability);
         }
     }
@@ -728,6 +731,8 @@ function getnearestURACarparkInformation(carparknoinput)
                         if (jsonobject4.Result[i].ppCode == geturacarparkfromuser)
                         {
                             console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
+                            var showuracarparkaddress = jsonobject4.Result[i].ppName;
+                            return showuracarparkaddress;
                         }
                         
                         
@@ -745,7 +750,7 @@ getnearestcarpark('1.332401', '103.848438');
 getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
-getnearestURACarparkInformation('K0087');
+//getnearestURACarparkInformation('K0087');
 
 
 
