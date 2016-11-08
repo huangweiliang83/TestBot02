@@ -620,10 +620,12 @@ function callback(error, response, body)
         
         for (var i = 0; i < jsonobject3.Result.length; ++i)
         {
+                if (jsonobject3.Result[i].lotType == "C")
+                {
                 console.log("URA Carpark No: " + jsonobject3.Result[i].carparkNo);
                 console.log("URA Lot Type: " + jsonobject3.Result[i].lotType);
                 console.log("URA Carpark Lot Availability: " + jsonobject3.Result[i].lotsAvailable);
-                
+                }
         }
   }
 }
