@@ -617,12 +617,13 @@ function callback(error, response, body)
         var jsonobject3 = JSON.parse(body);
         console.log("parse data from URA");
         console.log(util.inspect(body, false, null));
-        console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
-    
+        
         for (var i = 0; i < jsonobject3.Result.length; ++i)
         {
-                console.log("carparknoURA: " + jsonobject3.Result[i].carparkNo);
-                console.log("test");
+                console.log("URA Carpark No: " + jsonobject3.Result[i].carparkNo);
+                console.log("URA Lot Type: " + jsonobject3.Result[i].lotType);
+                console.log("URA Carpark Lot Availability: " + jsonobject3.Result[i].lotsAvailable);
+                
         }
   }
 }
