@@ -617,6 +617,7 @@ function callback(error, response, body)
         var jsonobject3 = JSON.parse(body);
         console.log("parse data from URA");
         console.log(util.inspect(body, false, null));
+        console.log("URA Lat :" + jsonobject3.Result[0].geometries[0].coordinates);
         
         for (var i = 0; i < jsonobject3.Result.length; ++i)
         {
