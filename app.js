@@ -694,7 +694,7 @@ function getnearestURACarpark(latinput, longinput)
 
 function getnearestURACarparkInformation(carparknoinput)
 {
-
+    var showuracarparkaddress;
     var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Details',
@@ -708,7 +708,7 @@ function getnearestURACarparkInformation(carparknoinput)
     {
         var cv2 = new SVY21();
         var geturacarparkfromuser =  carparknoinput;
-        var showuracarparkaddress;
+        
         //var geturacarparkfromuser =  "K0087";
         //var getlatfromuser =  1.332401;
         //var getlongfromuser = 103.848438;
