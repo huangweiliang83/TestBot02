@@ -630,11 +630,7 @@ function callback(error, response, body)
                 console.log("URA Coordinates : " + jsonobject3.Result[i].geometries[0].coordinates);
                 var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
                 var uracoordinatesresult = uracoordinates.split(",");
-                console.log("URA Coordinates Result : " + uracoordinatesresult);
-                    for(var m = 0; m < uracoordinatesresult.length; m++)
-                    {
-                        console.log(uracoordinatesresult[m]);
-                    }
+                console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
                 }
         }
   }
