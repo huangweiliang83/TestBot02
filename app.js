@@ -720,19 +720,23 @@ getnearestURACarpark('1.332401', '103.848438');
 
              for (var i = 0; i < jsonobject4.Result.length; ++i)
             {
-                console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
-                console.log("URA Carpark Lot No : " + jsonobject4.Result[i].ppCode);
-                // console.log("URA Carpark Coordinates : " + jsonobject4.Result[i].geometries[0].coordinates);
-                // var uracoordinates1 = jsonobject4.Result[i].geometries[0].coordinates;
-                // var uracoordinatesresult1 = uracoordinates1.split(",");
-                // console.log("URA Carpark Coordinates Latitude (SVY21) : " + uracoordinatesresult1[0]);
-                // console.log("URA Carpark Coordinates Longitude (SVY21) : " + uracoordinatesresult1[1]);
-                // //Convert SVY21 to Lat/Long
-                // var getlatlong3 = cv2.computeLatLon(uracoordinatesresult1[0], uracoordinatesresult1[1]);
-                // var showlat3 = getlatlong3[0];
-                // var showlong3 = getlatlong3[1];
-                // console.log("URA Carpark Latitude : " + showlat3);
-                // console.log("URA Carpark Longitude : " + showlong3);
+                //Find car park lot availability for cars
+                    if (jsonobject4.Result[i].vehCat == "C")
+                    {
+                        console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
+                        console.log("URA Carpark Lot No : " + jsonobject4.Result[i].ppCode);
+                        // console.log("URA Carpark Coordinates : " + jsonobject4.Result[i].geometries[0].coordinates);
+                        // var uracoordinates1 = jsonobject4.Result[i].geometries[0].coordinates;
+                        // var uracoordinatesresult1 = uracoordinates1.split(",");
+                        // console.log("URA Carpark Coordinates Latitude (SVY21) : " + uracoordinatesresult1[0]);
+                        // console.log("URA Carpark Coordinates Longitude (SVY21) : " + uracoordinatesresult1[1]);
+                        // //Convert SVY21 to Lat/Long
+                        // var getlatlong3 = cv2.computeLatLon(uracoordinatesresult1[0], uracoordinatesresult1[1]);
+                        // var showlat3 = getlatlong3[0];
+                        // var showlong3 = getlatlong3[1];
+                        // console.log("URA Carpark Latitude : " + showlat3);
+                        // console.log("URA Carpark Longitude : " + showlong3);
+                    }
             }
         }
     }
