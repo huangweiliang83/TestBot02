@@ -611,8 +611,8 @@ var options = {
 function callback(error, response, body) {
   if (!error && response.statusCode == 200) {
     var info = JSON.parse(body);
+    console.log("parse token");
     console.log(util.inspect(body, false, null));
-    //console.log(body)
 
   }
 }
