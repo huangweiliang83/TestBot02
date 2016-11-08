@@ -629,6 +629,7 @@ function callback(error, response, body)
                 var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
                 var uracoordinatesresult = uracoordinates.split(",");
                 console.log("URA Coordinates Lat : " + uracoordinatesresult[0]);
+                console.log("URA Coordinates Long : " + uracoordinatesresult[1]);
                 }
         }
   }
