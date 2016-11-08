@@ -601,9 +601,6 @@ getnearestweather('1.332401', '103.848438');
 // 1)Parse XML from Server 2)Get Nearest URA Carpark
 //=========================================================
 
-var cv1 = new SVY21();
-var getlatfromuser =  1.332401;
-var getlongfromuser = 103.848438;
 
 
 var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
@@ -617,6 +614,14 @@ var options = {
 
 function callback(error, response, body) 
 {
+    var cv1 = new SVY21();
+    var getlatfromuser =  1.332401;
+    var getlongfromuser = 103.848438;
+    var nearestdistance2 = 0;
+    var nearestURAcarparklot;
+    var nearestURAcarparkcoordinates;
+    var nearestURAcarparklotavailability;
+
     if (!error && response.statusCode == 200)
     {
         //Parse data
@@ -648,8 +653,30 @@ function callback(error, response, body)
                 //round to 3 decimal places
                 var showdistanceformat2 = Math.round(showdistance2*1000)/1000;
                 console.log("Distance(in km) : " + showdistanceformat2);
+
+                //Find nearest URA Carpark
+                var tempdistance2 = showdistanceformat2;
+                if (i == 0)
+                {
+                    nearestdistance2 = tempdistance2;
+                    nearestURAcarparklot= jsonobject3.Result[i].carparkNo;
+                    nearestURAcarparklotavailability= jsonobject3.Result[i].lotsAvailable;
+                    nearestURAcarparkcoordinates = jsonobject3.Result[i].geometries[0].coordinates;
+                }
+                if (nearestdistance2 > tempdistance2)
+                {
+                    nearestdistance2 = tempdistance2;
+                    nearestURAcarparklot= jsonobject3.Result[i].carparkNo;
+                    nearestURAcarparklotavailability= jsonobject3.Result[i].lotsAvailable;
+                    nearestURAcarparkcoordinates = jsonobject3.Result[i].geometries[0].coordinates;
+                }
+
                 }
         }
+
+        console.log("Nearest URA Carpark (Distance): " + nearestdistance2);
+        console.log("Nearest URA Carpark (Lot No) : " + nearestURAcarparklot);
+        console.log("Nearest URA Carpark (Lot Availability) : " + nearestURAcarparklotavailability);
   }
 }
 
