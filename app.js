@@ -689,11 +689,15 @@ getnearestcarpark('1.332401', '103.848438');
 getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
+getnearestURACarpark('K0087');
 
 
 //=========================================================
 // 1)Parse JSON from Server 2)Get Nearest URA Carpark Information
 //=========================================================
+
+function getnearestURACarparkInformation(carparknoinput)
+{
 
     var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
     var options = {
@@ -707,7 +711,8 @@ getnearestURACarpark('1.332401', '103.848438');
     function callback(error, response, body) 
     {
         var cv2 = new SVY21();
-        var geturacarparkfromuser =  "K0087";
+        var geturacarparkfromuser =  carparknoinput;
+        //var geturacarparkfromuser =  "K0087";
         //var getlatfromuser =  1.332401;
         //var getlongfromuser = 103.848438;
         
@@ -721,7 +726,7 @@ getnearestURACarpark('1.332401', '103.848438');
 
              for (var i = 0; i < jsonobject4.Result.length; ++i)
             {
-                //Find car park details for cars
+                    //Find car park details for cars
                     if (jsonobject4.Result[i].vehCat == "Car" && jsonobject4.Result[i].weekdayMin == "30 mins")
                     {
                         //console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
@@ -741,7 +746,7 @@ getnearestURACarpark('1.332401', '103.848438');
 
     request(options, callback);
 
-
+}
 
 
 
