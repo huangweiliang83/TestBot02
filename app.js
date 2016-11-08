@@ -631,9 +631,9 @@ function callback(error, response, body)
                 var uracoordinates = jsonobject3.Result[i].geometries[0].coordinates;
                 var uracoordinatesresult = uracoordinates.split(",");
                 console.log("URA Coordinates Result : " + uracoordinatesresult);
-                    for(var i = 0; i < uracoordinatesresult.length; i++)
+                    for(var m = 0; m < uracoordinatesresult.length; m++)
                     {
-                        console.log(uracoordinatesresult[i]);
+                        console.log(uracoordinatesresult[m]);
                     }
                 }
         }
