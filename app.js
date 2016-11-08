@@ -615,13 +615,13 @@ function callback(error, response, body) {
     var jsonobject3 = JSON.parse(body);
     console.log("parse data from URA");
     console.log(util.inspect(body, false, null));
-
+    console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
   }
 }
 
 request(options, callback);
 
-console.log("carparknoURA: " + jsonobject3.Result[0].carparkNo);
+
 
 
 
