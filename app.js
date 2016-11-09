@@ -848,7 +848,7 @@ getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
 getnearestURACarparkInformation('K0087');
-getseasonparkinginformation('350101');
+getseasonparkinginformation('310100');
 
 
 
