@@ -796,6 +796,7 @@ function getseasonparkinginformation()
                             console.log("Season Parking Branch Office : " + jsonobject5.cpkgrpinfo.cpktype[i].bo);
                             console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
                             console.log("Season Parking Car Park No. Within the Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk);
+                            console.log("Season Parking Rate : " + jsonobject5.cpkgrpinfo.cpktype[i].rate.r);
 
                             
 
