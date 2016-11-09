@@ -261,6 +261,8 @@ var parser = new xml2js.Parser({explicitArray : false, ignoreAttrs : true});
 var util = require('util');
 var request = require('request');
 
+//var nearbycarparksresult = [];
+
 //=========================================================
 // Get Nearest Carpark
 //=========================================================
@@ -356,6 +358,17 @@ function getnearestcarpark(latinput, longinput)
                         }
                         
                         console.log("----------------------------------------");
+
+
+                        // nearbycarparks.push({
+						// 		"Latitude": showlat,
+						// 		"Longitude" : showlong,
+						// 		"CarParkingNo": jsonobject.GetAmenities.Carparking[i].CarParkingNo,
+						// 		"Address": jsonobject.GetAmenities.Carparking[i].Address,
+						// 		"CpkAvail": jsonobject.GetAmenities.Carparking[i].CpkAvail,
+						// 		"distance" : showdistanceformat,
+						// 		location: showlat + ',' + showlong
+						// 	});
                     }
                     
                     console.log("Nearest Distance : " + nearestdistance);
@@ -625,14 +638,13 @@ function getnearestURACarpark(latinput, longinput)
         var nearestURAcarparklot;
         var nearestURAcarparkcoordinates;
         var nearestURAcarparklotavailability;
-        var currentdate = new Date();
-
         
-        var httpdate = new Date(response.headers['date']);
-        var httpgetday = httpdate.getDate();
-        console.log("HTTP Respond Date : " +httpdate);
-        console.log("HTTP Get Date : " +httpgetday);
-        console.log("Current Date : " +currentdate); 
+        // var currentdate = new Date();
+        // var httpdate = new Date(response.headers['date']);
+        // var httpgetday = httpdate.getDate();
+        // console.log("HTTP Respond Date : " +httpdate);
+        // console.log("HTTP Get Date : " +httpgetday);
+        // console.log("Current Date : " +currentdate); 
 
         if (!error && response.statusCode == 200)
         {
