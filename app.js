@@ -810,6 +810,7 @@ function getseasonparkinginformation()
                             seasonparkingcarparkwithingroup = jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk;
                             seasonparkingrate = jsonobject5.cpkgrpinfo.cpktype[i].rate.r;
 
+                            //Save result into object
                             seasonparkingresult[i] = {
                                 SeasonParkingType : seasonparkingtype,
                                 SeasonParkingBranchOffice : seasonparkingbranchoffice,
@@ -821,7 +822,7 @@ function getseasonparkinginformation()
                             console.log("----------------------------------------");
                      }
                     
-                     console.log("SeasonParkingType: " + seasonparkingresult[1].SeasonParkingType);
+                     console.log("SeasonParkingType: " + seasonparkingresult.SeasonParkingType[1]);
                     // console.log("Nearest Car Park : " + nearestcarpark);
                     // console.log("Nearest Car Park No : " + nearestcarparkno);
                     // console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
