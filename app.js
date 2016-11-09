@@ -626,7 +626,7 @@ function getnearestURACarpark(latinput, longinput)
         var nearestURAcarparkcoordinates;
         var nearestURAcarparklotavailability;
 
-        console.log("Respond Code : " +response.statusCode);
+        console.log("Respond Code : " +response.headers['date']); 
 
         if (!error && response.statusCode == 200)
         {
