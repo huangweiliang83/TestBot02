@@ -789,16 +789,15 @@ function getseasonparkinginformation()
                     console.log(util.inspect(jsonobject5, false, null));
 
                     //traverse JSON object
-            
-                    //console.log("Season Parking Type: " + jsonobject5.cpkgrpinfo.cpktype[0].type);
-
                     for (var i = 0; i < jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
                     {
 
                             console.log("Season Parking Type : " + jsonobject5.cpkgrpinfo.cpktype[i].type);
                             console.log("Season Parking Branch Office : " + jsonobject5.cpkgrpinfo.cpktype[i].bo);
                             console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
-                            console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
+                            console.log("Season Parking Car Park No. Within the Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk);
+
+                            
 
 
 
