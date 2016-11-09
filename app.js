@@ -757,6 +757,12 @@ function getseasonparkinginformation()
 {
     var getpostalcodefromuser = 310100;
     var getseasonparkingoptionfromuser = 0;
+    var seasonparkingtype;
+    var seasonparkingbranchoffice;
+    var seasonparkinggroup;
+    var seasonparkingcarparkwithingroup;
+    var seasonparkingrate;
+    var seasonparkingresult = {};
 
      https.get('https://services2.hdb.gov.sg/webapp/BN22SvcMap/BN22SCpkgrp?pcode='+getpostalcodefromuser+'&ptype='+getseasonparkingoptionfromuser+'', function(res)
     {
@@ -797,18 +803,25 @@ function getseasonparkinginformation()
                             console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
                             console.log("Season Parking Car Park No. Within the Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk);
                             console.log("Season Parking Rate : " + jsonobject5.cpkgrpinfo.cpktype[i].rate.r);
-
                             
+                            seasonparkingtype = jsonobject5.cpkgrpinfo.cpktype[i].type;
+                            seasonparkingbranchoffice = jsonobject5.cpkgrpinfo.cpktype[i].bo;
+                            seasonparkinggroup = jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp;
+                            seasonparkingcarparkwithingroup = jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk;
+                            seasonparkingrate = jsonobject5.cpkgrpinfo.cpktype[i].rate.r;
 
+                            seasonparkingresult[i] = {
+                                SeasonParkingType : seasonparkingtype,
+                                SeasonParkingBranchOffice : seasonparkingbranchoffice,
+                                SeasonParkingGroup : seasonparkinggroup,
+                                SeasonParkingCarParkWithinGroup : seasonparkingcarparkwithingroup,
+                                SeasonParkingRate : seasonparkingrate
+                                };
 
-
-                    
-                    
-                    
                             console.log("----------------------------------------");
                      }
                     
-                    // console.log("Nearest Distance : " + nearestdistance);
+                     console.log("SeasonParkingType: " + seasonparkingresult[1].SeasonParkingType);
                     // console.log("Nearest Car Park : " + nearestcarpark);
                     // console.log("Nearest Car Park No : " + nearestcarparkno);
                     // console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
