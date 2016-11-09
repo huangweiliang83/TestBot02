@@ -607,7 +607,7 @@ function getnearestURACarpark(latinput, longinput)
     var getlatfromuser =  latinput;
     var getlongfromuser = longinput;
 
-    var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
+    var token = "-t0X30mcz37jb5A3cWafvb5Pu-7k-Ex8+7BAw3TdB1cf+b4Psg3R-v9+JFpD5-7H8U4-HbA1ef4v8-Gx7D-J253303ga+08sa93f";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability',
     headers: {
@@ -795,46 +795,17 @@ function getseasonparkinginformation()
                     for (var i = 0; i < jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
                     {
 
-                            console.log("Season Parking Type: " + jsonobject5.cpkgrpinfo.cpktype[i].type);
-                    //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
-                    //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
-                    //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
-                    //     console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
-                    //     console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
-                    //     console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
-                    //     console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
-                    //     //convert SVY21 to Lat/Long
-                    //     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    //     //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
-                    //     getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
-                    //     showlat = getlatlong[0];
-                    //     showlong = getlatlong[1];
-                    //     console.log("Latitude : " + showlat);
-                    //     console.log("Longitude : " + showlong);
-                    //     //calculate distance between 2 coordinates
-                    //     showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
-                    //     //round to 3 decimal places
-                    //     showdistanceformat = Math.round(showdistance*1000)/1000;
-                    //     console.log("Distance(in km) : " + showdistanceformat);
-                        
-                    //     //find nearest car park by finding shortest distance
-                    //     var tempdistance = showdistanceformat;
-                    //     if (i == 0)
-                    //     {
-                    //         nearestdistance = tempdistance;
-                    //         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
-                    //         nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
-                    //         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
-                    //     }
-                    //     if (nearestdistance > tempdistance)
-                    //     {
-                    //         nearestdistance = tempdistance;
-                    //         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
-                    //         nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
-                    //         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
-                    //     }
-                        
-                    //     console.log("----------------------------------------");
+                            console.log("Season Parking Type : " + jsonobject5.cpkgrpinfo.cpktype[i].type);
+                            console.log("Season Parking Branch Office : " + jsonobject5.cpkgrpinfo.cpktype[i].bo);
+                            console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
+                            console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
+
+
+
+                    
+                    
+                    
+                            console.log("----------------------------------------");
                      }
                     
                     // console.log("Nearest Distance : " + nearestdistance);
