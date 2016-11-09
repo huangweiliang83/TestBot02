@@ -790,10 +790,12 @@ function getseasonparkinginformation()
 
                     //traverse JSON object
             
-                    console.log("Season Parking Type: " + jsonobject5.cpkgrpinfo.cpktype[0].type);
+                    //console.log("Season Parking Type: " + jsonobject5.cpkgrpinfo.cpktype[0].type);
 
-                    // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
-                    // {
+                    for (var i = 0; i < jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
+                    {
+
+                            console.log("Season Parking Type: " + jsonobject5.cpkgrpinfo.cpktype[i].type);
                     //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
                     //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
                     //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
@@ -833,7 +835,7 @@ function getseasonparkinginformation()
                     //     }
                         
                     //     console.log("----------------------------------------");
-                    // }
+                     }
                     
                     // console.log("Nearest Distance : " + nearestdistance);
                     // console.log("Nearest Car Park : " + nearestcarpark);
