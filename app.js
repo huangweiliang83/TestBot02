@@ -249,6 +249,9 @@ function calculatedistance(lat1, lon1, lat2, lon2, unit)
         return dist
 }
 
+//=========================================================
+// Global
+//=========================================================
 
 var eyes = require('eyes');
 var https = require('https');
@@ -259,7 +262,7 @@ var util = require('util');
 var request = require('request');
 
 //=========================================================
-// 1)Parse XML from Server 2)Get Nearest Carpark
+// Get Nearest Carpark
 //=========================================================
 
 function getnearestcarpark(latinput, longinput)
@@ -372,7 +375,7 @@ function getnearestcarpark(latinput, longinput)
 }
 
 //=========================================================
-// 1)Parse XML from Server 2) Get Carpark Information
+// Get Nearest Carpark Information
 //=========================================================
 
 function getcarparkinformation(carparknoinput)
@@ -428,7 +431,7 @@ function getcarparkinformation(carparknoinput)
 }
 
 //=========================================================
-// 1)Parse XML from Server 2)Get Nearest 2-Hour Weather
+// Get Nearest 2-Hour Weather
 //=========================================================
 function getnearestweather(latinput, longinput)
 {
@@ -596,7 +599,7 @@ function getnearestweather(latinput, longinput)
 
 
 //=========================================================
-// 1)Parse JSON from Server 2)Get Nearest URA Carpark
+// Get Nearest URA Carpark
 //=========================================================
 
 function getnearestURACarpark(latinput, longinput)
@@ -686,11 +689,12 @@ function getnearestURACarpark(latinput, longinput)
 }
 
 //=========================================================
-// 1)Parse JSON from Server 2)Get Nearest URA Carpark Information
+// Get Nearest URA Carpark Information
 //=========================================================
 
 function getnearestURACarparkInformation(carparknoinput)
 {
+    //To get new token everyday
     var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Details',
@@ -744,11 +748,138 @@ function getnearestURACarparkInformation(carparknoinput)
 
 }
 
+
+//=========================================================
+// Get Season Parking Information Based on Postal Code
+//=========================================================
+
+function getseasonparkinginformation()
+{
+    var getpostalcodefromuser = 310100;
+    var getseasonparkingoptionfromuser = 0;
+
+     https.get('https://services2.hdb.gov.sg/webapp/BN22SvcMap/BN22SCpkgrp?pcode='+getpostalcodefromuser+'&ptype='+getseasonparkingoptionfromuser+'', function(res)
+    {
+        var response_data = '';
+        res.setEncoding('utf8');
+        res.on('data', function(chunk)
+        {
+            response_data += chunk;
+        });
+    
+        res.on('end', function() 
+        {
+            parser.parseString(response_data, function(err, result) 
+            {
+                if (err) 
+                {
+                    console.log('Got error: ' + err.message);
+                }
+                else 
+                {
+                    eyes.inspect(result);
+
+                    //convert into JSON into string
+                    console.log('Converting to JSON string.');
+                    console.dir(JSON.stringify(result));
+
+                    //convert into JSON object
+                    console.log('Converting to JSON object.');
+                    var jsonobject5 = JSON.parse(JSON.stringify(result));
+                    console.log(util.inspect(jsonobject5, false, null));
+
+                    //traverse JSON object
+                    
+
+                    // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
+                    // {
+                    //     console.log("Latitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Latitude);
+                    //     console.log("Longitude(SVY21) : " + jsonobject.GetAmenities.Carparking[i].Longitude);
+                    //     console.log("CoordX : " + jsonobject.GetAmenities.Carparking[i].CoordX);
+                    //     console.log("CoordY : " + jsonobject.GetAmenities.Carparking[i].CoordY);
+                    //     console.log("CarParkingNo : " + jsonobject.GetAmenities.Carparking[i].CarParkingNo);
+                    //     console.log("CpkAvail : " + jsonobject.GetAmenities.Carparking[i].CpkAvail);
+                    //     console.log("Address : " + jsonobject.GetAmenities.Carparking[i].Address);
+                    //     //convert SVY21 to Lat/Long
+                    //     cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    //     //console.log(cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude));
+                    //     getlatlong = cv.computeLatLon(jsonobject.GetAmenities.Carparking[i].Latitude, jsonobject.GetAmenities.Carparking[i].Longitude);
+                    //     showlat = getlatlong[0];
+                    //     showlong = getlatlong[1];
+                    //     console.log("Latitude : " + showlat);
+                    //     console.log("Longitude : " + showlong);
+                    //     //calculate distance between 2 coordinates
+                    //     showdistance = calculatedistance(showlat, showlong, getlatfromuser, getlongfromuser, 'K');
+                    //     //round to 3 decimal places
+                    //     showdistanceformat = Math.round(showdistance*1000)/1000;
+                    //     console.log("Distance(in km) : " + showdistanceformat);
+                        
+                    //     //find nearest car park by finding shortest distance
+                    //     var tempdistance = showdistanceformat;
+                    //     if (i == 0)
+                    //     {
+                    //         nearestdistance = tempdistance;
+                    //         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                    //         nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                    //         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
+                    //     }
+                    //     if (nearestdistance > tempdistance)
+                    //     {
+                    //         nearestdistance = tempdistance;
+                    //         nearestcarpark = jsonobject.GetAmenities.Carparking[i].Address;
+                    //         nearestcarparklotavailable = jsonobject.GetAmenities.Carparking[i].CpkAvail;
+                    //         nearestcarparkno = jsonobject.GetAmenities.Carparking[i].CarParkingNo;
+                    //     }
+                        
+                    //     console.log("----------------------------------------");
+                    // }
+                    
+                    // console.log("Nearest Distance : " + nearestdistance);
+                    // console.log("Nearest Car Park : " + nearestcarpark);
+                    // console.log("Nearest Car Park No : " + nearestcarparkno);
+                    // console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
+                    // console.log('Done.');
+                }
+            });
+        });
+
+        res.on('error', function(err) 
+        {
+            console.log('Got error: ' + err.message);
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
 getnearestcarpark('1.332401', '103.848438');
 getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
 getnearestURACarparkInformation('K0087');
+getseasonparkinginformation();
 
 
 
