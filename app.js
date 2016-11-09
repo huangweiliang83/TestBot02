@@ -626,6 +626,8 @@ function getnearestURACarpark(latinput, longinput)
         var nearestURAcarparkcoordinates;
         var nearestURAcarparklotavailability;
 
+        console.log("Respond Code : " +response.statusCode);
+
         if (!error && response.statusCode == 200)
         {
             //Parse data
@@ -694,6 +696,10 @@ function getnearestURACarpark(latinput, longinput)
 
 function getnearestURACarparkInformation(carparknoinput)
 {
+    //var geturacarparkfromuser =  "K0087";
+    //var getlatfromuser =  1.332401;
+    //var getlongfromuser = 103.848438;
+
     //To get new token everyday
     var token = "-t0X30mcz37jb5A3cWafvb5Pu-7k-Ex8+7BAw3TdB1cf+b4Psg3R-v9+JFpD5-7H8U4-HbA1ef4v8-Gx7D-J253303ga+08sa93f";
     var options = {
@@ -709,11 +715,6 @@ function getnearestURACarparkInformation(carparknoinput)
         var cv2 = new SVY21();
         var geturacarparkfromuser =  carparknoinput;
         
-        //var geturacarparkfromuser =  "K0087";
-        //var getlatfromuser =  1.332401;
-        //var getlongfromuser = 103.848438;
-        
-
         if (!error && response.statusCode == 200)
         {
             //Parse data
@@ -726,26 +727,17 @@ function getnearestURACarparkInformation(carparknoinput)
                     //Find car park details for cars
                     if (jsonobject4.Result[i].vehCat == "Car" && jsonobject4.Result[i].weekdayMin == "30 mins")
                     {
-                        //console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
-                        //console.log("URA Carpark Lot No : " + jsonobject4.Result[i].ppCode);
-
+                        //Match car park no from nearby URA carpark and get car park address
                         if (jsonobject4.Result[i].ppCode == geturacarparkfromuser)
                         {
                             console.log("URA Carpark Address : " + jsonobject4.Result[i].ppName);
-                            var showuracarparkaddress = jsonobject4.Result[i].ppName;
-                            
+                            var showuracarparkaddress = jsonobject4.Result[i].ppName;   
                         }
-                        
-                        
-                        
                     }
             }
         }
     }
-
     request(options, callback);
-
-
 }
 
 
@@ -798,7 +790,6 @@ function getseasonparkinginformation(postalcodeinput)
                     //traverse JSON object
                     for (var i = 0; i < jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
                     {
-
                             console.log("Season Parking Type : " + jsonobject5.cpkgrpinfo.cpktype[i].type);
                             console.log("Season Parking Branch Office : " + jsonobject5.cpkgrpinfo.cpktype[i].bo);
                             console.log("Season Parking Group : " + jsonobject5.cpkgrpinfo.cpktype[i].cpkgrp);
@@ -832,14 +823,6 @@ function getseasonparkinginformation(postalcodeinput)
         });
     });
 }
-
-
-
-
-
-
-
-
 
 
 getnearestcarpark('1.332401', '103.848438');
