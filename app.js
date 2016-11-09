@@ -753,9 +753,10 @@ function getnearestURACarparkInformation(carparknoinput)
 // Get Season Parking Information Based on Postal Code
 //=========================================================
 
-function getseasonparkinginformation()
+function getseasonparkinginformation(postalcodeinput)
 {
-    var getpostalcodefromuser = 310100;
+    //var getpostalcodefromuser = 310100;
+    var getpostalcodefromuser = postalcodeinput;
     var getseasonparkingoptionfromuser = 0;
     var seasonparkingtype;
     var seasonparkingbranchoffice;
@@ -810,8 +811,6 @@ function getseasonparkinginformation()
                             seasonparkingcarparkwithingroup = jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk;
                             seasonparkingrate = jsonobject5.cpkgrpinfo.cpktype[i].rate.r;
 
-                            
-
                             //Save result into object
                             seasonparkingresultobj[i] = {
                                 SeasonParkingType : seasonparkingtype,
@@ -823,9 +822,6 @@ function getseasonparkinginformation()
 
                             console.log("----------------------------------------");
                      }
-                    
-                     console.log("SeasonParkingType: " + seasonparkingresultobj[1].SeasonParkingType);
-                    
                 }
             });
         });
@@ -835,21 +831,6 @@ function getseasonparkinginformation()
             console.log('Got error: ' + err.message);
         });
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
@@ -866,7 +847,7 @@ getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
 getnearestURACarparkInformation('K0087');
-getseasonparkinginformation();
+getseasonparkinginformation('310100');
 
 
 
