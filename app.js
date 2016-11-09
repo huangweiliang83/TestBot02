@@ -805,9 +805,6 @@ function getseasonparkinginformation(postalcodeinput)
                     var jsonobject5 = JSON.parse(JSON.stringify(result));
                     console.log(util.inspect(jsonobject5, false, null));
 
-                    console.log("Length : "+jsonobject5.cpkgrpinfo.cpktype.length);
-                    //
-
                     //traverse JSON object
                     for (var i = 0; i < jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
                     {
@@ -851,7 +848,6 @@ getcarparkinformation('TPMD');
 getnearestweather('1.332401', '103.848438');
 getnearestURACarpark('1.332401', '103.848438');
 getnearestURACarparkInformation('K0087');
-//getseasonparkinginformation('350101');
 getseasonparkinginformation('310100');
 
 
