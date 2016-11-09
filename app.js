@@ -627,9 +627,11 @@ function getnearestURACarpark(latinput, longinput)
         var nearestURAcarparklotavailability;
         var currentdate = new Date();
 
-        console.log("Respond Code : " +response.headers['date']);
+        
         var httpdate = new Date(response.headers['date']);
-        console.log("Respond Date : " +httpdate);
+        var httpgetday = httpdate.getDate();
+        console.log("HTTP Respond Date : " +httpdate);
+        console.log("HTTP Get Date : " +httpgetday);
         console.log("Current Date : " +currentdate); 
 
         if (!error && response.statusCode == 200)
