@@ -762,7 +762,7 @@ function getseasonparkinginformation()
     var seasonparkinggroup;
     var seasonparkingcarparkwithingroup;
     var seasonparkingrate;
-    var seasonparkingresult = {};
+    var seasonparkingresultobj = {};
 
      https.get('https://services2.hdb.gov.sg/webapp/BN22SvcMap/BN22SCpkgrp?pcode='+getpostalcodefromuser+'&ptype='+getseasonparkingoptionfromuser+'', function(res)
     {
@@ -810,10 +810,10 @@ function getseasonparkinginformation()
                             seasonparkingcarparkwithingroup = jsonobject5.cpkgrpinfo.cpktype[i].cpkd.cpk;
                             seasonparkingrate = jsonobject5.cpkgrpinfo.cpktype[i].rate.r;
 
-                            console.log("Season Parking Type 2 : " + seasonparkingtype);
+                            
 
                             //Save result into object
-                            seasonparkingresult[i] = {
+                            seasonparkingresultobj[i] = {
                                 SeasonParkingType : seasonparkingtype,
                                 SeasonParkingBranchOffice : seasonparkingbranchoffice,
                                 SeasonParkingGroup : seasonparkinggroup,
@@ -824,11 +824,8 @@ function getseasonparkinginformation()
                             console.log("----------------------------------------");
                      }
                     
-                    // console.log("SeasonParkingType: " + seasonparkingresult[1].SeasonParkingType);
-                    // console.log("Nearest Car Park : " + nearestcarpark);
-                    // console.log("Nearest Car Park No : " + nearestcarparkno);
-                    // console.log("Nearest Car Park Lot Availability : " + nearestcarparklotavailable);
-                    // console.log('Done.');
+                     console.log("SeasonParkingType: " + seasonparkingresultobj[1].SeasonParkingType);
+                    
                 }
             });
         });
