@@ -695,7 +695,7 @@ function getnearestURACarpark(latinput, longinput)
 function getnearestURACarparkInformation(carparknoinput)
 {
     //To get new token everyday
-    var token = "c4f-7500yY7bc3h1f3Cf30vye1N45+sd8-yBsd4CrykdR25-WeWA+cq867Sx0-ce4FP3PrMv@P0cy5vvW37vcb63BgF38eGKj4A5";
+    var token = "-t0X30mcz37jb5A3cWafvb5Pu-7k-Ex8+7BAw3TdB1cf+b4Psg3R-v9+JFpD5-7H8U4-HbA1ef4v8-Gx7D-J253303ga+08sa93f";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Details',
     headers: {
@@ -789,7 +789,8 @@ function getseasonparkinginformation()
                     console.log(util.inspect(jsonobject5, false, null));
 
                     //traverse JSON object
-                    
+            
+                    console.log("Season Parking Type: " + jsonobject5.cpkgrpinfo.cpktype[0].type);
 
                     // for (var i = 0; i < jsonobject.GetAmenities.Carparking.length; ++i) 
                     // {
