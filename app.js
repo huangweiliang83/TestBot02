@@ -808,7 +808,7 @@ function getseasonparkinginformation(postalcodeinput)
                     
 
                     //traverse JSON object
-                    for (var i = 0; i <= jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
+                    for (var i = 0; i < jsonobject5.cpkgrpinfo.cpktype.length; ++i) 
                     {
                             console.log("Season Parking Type : " + jsonobject5.cpkgrpinfo.cpktype[i].type);
                             console.log("Season Parking Branch Office : " + jsonobject5.cpkgrpinfo.cpktype[i].bo);
