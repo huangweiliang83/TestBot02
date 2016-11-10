@@ -620,7 +620,7 @@ function getnearestURACarpark(latinput, longinput)
     var getlatfromuser =  latinput;
     var getlongfromuser = longinput;
 
-    var token = "-t0X30mcz37jb5A3cWafvb5Pu-7k-Ex8+7BAw3TdB1cf+b4Psg3R-v9+JFpD5-7H8U4-HbA1ef4v8-Gx7D-J253303ga+08sa93f";
+    var token = "6hf2NfWWja4j12bn3H4z8g62287rha485Fu7ff1F8gVC0R-AbBC-38YT3c856fV3HCZmet2j54+gbCP40u3@Q184ccRQGzcbXefE";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Availability',
     headers: {
@@ -719,7 +719,7 @@ function getnearestURACarparkInformation(carparknoinput)
     //var getlongfromuser = 103.848438;
 
     //To get new token everyday
-    var token = "-t0X30mcz37jb5A3cWafvb5Pu-7k-Ex8+7BAw3TdB1cf+b4Psg3R-v9+JFpD5-7H8U4-HbA1ef4v8-Gx7D-J253303ga+08sa93f";
+    var token = "6hf2NfWWja4j12bn3H4z8g62287rha485Fu7ff1F8gVC0R-AbBC-38YT3c856fV3HCZmet2j54+gbCP40u3@Q184ccRQGzcbXefE";
     var options = {
     url: 'https://www.ura.gov.sg/uraDataService/invokeUraDS?service=Car_Park_Details',
     headers: {
